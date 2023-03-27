@@ -1,0 +1,26 @@
+@import '../../themes/themes.scss';
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 80px);
+  padding: 80px;
+
+  .summary-title-bar {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    height: 60px;
+
+    .divider {
+      width: 8px; 
+      height: 100%;
+      background-color: $theme-color-font;
+    }
+
+    .subtitle {
+      font-size: 27px;
+    }
+  }
+}
