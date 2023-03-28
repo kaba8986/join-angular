@@ -7,13 +7,13 @@
     overflow-y: scroll;
 
     h1 {
-      margin-bottom: 64px;
+      margin-bottom: 32px;
     }
 }
 
 .add-task-form {
   border: 1px solid red;
-  height: calc(100% - 145px);
+  // height: calc(100% - 145px);
   display: flex;
 
   .left-side {
