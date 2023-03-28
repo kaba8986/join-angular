@@ -1,13 +1,18 @@
 .container {
+  position: relative;
     box-sizing: border-box;
     width: 100%;
     height: calc(100% - 80px);
     padding: 80px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
 
-    h1 {
-        font-size: 60px;
-        color: #0D0D0D;
-        margin: unset;
-      }
+
+
+.go-back {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  font-size: 40px;
+  cursor: pointer;
 }
