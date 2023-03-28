@@ -1,1 +1,37 @@
-<p>add-task works!</p>
+<div class="container">
+  <div class="headline">
+    <h1>Add Task</h1>
+  </div>
+  <form class="add-task-form">
+    <div class="left-side">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select>
+          <mat-option>
+            example
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned to</mat-label>
+        <mat-select>
+          <mat-option>
+            example
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="selected-to">
+        <span>Selected:</span>
+      </div>
+    </div>
+    <div class="right-side"></div>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+.container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 80px);
+    padding: 80px;
+    overflow-y: scroll;
+
+    h1 {
+      margin-bottom: 64px;
+    }
+}
+
+.add-task-form {
+  border: 1px solid red;
+  height: calc(100% - 145px);
+  display: flex;
+
+  .left-side {
+    flex: 1;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding-right: 64px;
+  }
+
+  .right-side {
+    flex: 1;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+  }
+}
