@@ -32,3 +32,18 @@
     padding-left: 64px;
   }
 }
+
+
+.add-subtask {
+  cursor: pointer;
+}
+
+.subtask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.single-subtask-margin {
+  margin-left: 32px;
+}

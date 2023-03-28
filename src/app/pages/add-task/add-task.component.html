@@ -8,10 +8,12 @@
         <mat-label>Title</mat-label>
         <input matInput placeholder="Title">
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea matInput></textarea>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
         <mat-select>
@@ -20,6 +22,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label>Assigned to</mat-label>
         <mat-select>
@@ -28,6 +31,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <div class="selected-to">
         <span>Selected:</span>
       </div>
@@ -35,13 +39,31 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-side">
-      <mat-form-field appearance="outline">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+      <!-- <mat-form-field appearance="outline" class="date-picker" class="full-width">
+        <mat-label>Due Date</mat-label>
+        <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate"
+          [min]="minDate">
         <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Priority</mat-label>
+        <mat-select [(value)]="newTask.priority">
+          <mat-option *ngFor="let prio of priorities" [value]="prio.value">{{prio.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Subtasks</mat-label>
+        <input matInput placeholder="Add subtask..." #subtaskInput class="subtask-input">
+        <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
+      </mat-form-field>
+      <section class="subtask-list">
+        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks">{{sub.text}}</mat-checkbox>
+      </section>
+
     </div>
   </form>
 </div>

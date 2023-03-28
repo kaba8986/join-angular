@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core'; 
+import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
-const materialComponents: any = [MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatSidenavModule];
+const materialComponents: any = [MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatSidenavModule];
 
 
 @NgModule({
@@ -15,3 +18,5 @@ const materialComponents: any = [MatDatepickerModule, MatFormFieldModule, MatIco
   exports: materialComponents
 })
 export class MaterialModule { }
+
+
