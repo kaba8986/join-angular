@@ -1,0 +1,110 @@
+@import '/src/app/themes/themes.scss';
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 80px);
+  padding: 80px;
+  overflow-y: scroll;
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    margin-bottom: 32px;
+  }
+}
+
+.interaction-box {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 48px;
+
+  .input-box {
+    position: relative;
+    height: 48px;
+    
+    input {
+      box-sizing: border-box;
+      padding: 8px 16px;
+      width: 240px;
+      height: 100%;
+      border: 1px solid gray;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    mat-icon {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 32px;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 21px;
+    font-weight: 600;
+    background-color: $theme-color;
+    color: #fff;
+    transition: 0.125s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $theme-color-font;
+      transition: 0.125s;
+    }
+  }
+}
+
+.main-content {
+  box-sizing: border-box;
+  // border: 1px solid grey;
+  height: calc(100% - 112px );
+  display: flex;
+  color: $theme-color;
+
+  .task-column {
+    flex: 1;
+    // border: 1px solid red;
+  }
+
+  .column-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    // border: 1px solid blue;
+    font-size: 18px;
+    font-weight: 600;
+
+    mat-icon {
+      border: 1px solid black;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid grey;
+        color: grey;
+      }
+    }
+  }
+
+  .column-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+

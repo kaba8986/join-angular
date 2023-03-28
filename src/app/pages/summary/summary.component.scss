@@ -30,8 +30,6 @@
 
 .main-content {
   box-sizing: border-box;
-  // min-height: calc(100% - 120px);
-  // border: 1px solid red;
   display: flex;
 
 
@@ -95,12 +93,14 @@
   padding: 16px;
   background-color: #fff;
   box-shadow: 0 3px 6px rgba($color: #000000, $alpha: 0.3);
+  transition: 0.125s;
   cursor: pointer;
 
   &:hover {
     background-color: $theme-color;
     color: #fff;
     box-shadow: 0 6px 12px rgba($color: #000000, $alpha: 0.6);
+    transition: 0.125s;
   }
 
   .counter {

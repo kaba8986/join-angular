@@ -1,1 +1,23 @@
-<p>board works!</p>
+<div class="container">
+  <div class="heading">
+    <h1>Board</h1>
+    <div class="interaction-box">
+      <div class="input-box">
+        <input type="text" placeholder="Search for...">
+        <mat-icon>search</mat-icon>
+      </div>
+      <button>
+        Add Task<mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div *ngFor="let i of [1, 2, 3, 4]" class="task-column">
+      <div class="column-head">
+        <span>Column-Title</span>
+        <mat-icon>add</mat-icon>
+      </div>
+      <div class="column-content"></div>
+    </div>
+  </div>
+</div>

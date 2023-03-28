@@ -11,6 +11,7 @@ import { BoardComponent } from './pages/board/board.component';
 import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ImpressComponent } from './pages/impress/impress.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -28,6 +29,7 @@ import { ImpressComponent } from './pages/impress/impress.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     MaterialModule
   ],
   providers: [],
