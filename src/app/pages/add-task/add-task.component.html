@@ -16,19 +16,22 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-        <mat-select>
-          <mat-option>
-            example
-          </mat-option>
+        <mat-select  [(ngModel)]="newTask.category" name="category">
+          <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
         </mat-select>
       </mat-form-field>
 
+
       <mat-form-field appearance="outline">
         <mat-label>Assigned to</mat-label>
-        <mat-select>
-          <mat-option>
-            example
-          </mat-option>
+        <mat-select [formControl]="assignments" multiple>
+          <mat-select-trigger>
+            {{assignments.value?.[0] || ''}}
+            <span *ngIf="(assignments.value?.length || 0) > 1" class="example-additional-selection">
+              (+{{(assignments.value?.length || 0) - 1}} {{assignments.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let contact of allContacts" [value]="contact">{{contact}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -57,12 +60,16 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Subtasks</mat-label>
-        <input matInput placeholder="Add subtask..." #subtaskInput class="subtask-input">
+        <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
         <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
       </mat-form-field>
       <section class="subtask-list">
-        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks">{{sub.text}}</mat-checkbox>
+        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks" [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
       </section>
+      <div class="button-line">
+        <button class="clear-form" (click)="clearForm()">Clear</button>
+        <button class="create-task" (click)="createTask()">Create Task</button>
+      </div>
 
     </div>
   </form>

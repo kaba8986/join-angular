@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Task } from 'src/app/models/task.class';
 
 @Component({
@@ -9,9 +10,13 @@ import { Task } from 'src/app/models/task.class';
 export class AddTaskComponent implements OnInit {
 
   loading: boolean = false;
-  minDate: Date;
-
   newTask: Task = new Task();
+  minDate: Date;
+  subtaskValue: string = '';
+  assignments = new FormControl('');
+
+  categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
+  allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
 
   priorities: any = [
     { name: 'High', value: 'high', color: 'red' },
@@ -29,13 +34,18 @@ export class AddTaskComponent implements OnInit {
 
   addSubtask(value: string) {
     if(value) {
-      console.log(value);
-      
+      this.newTask.subTasks.push({text: value, checked: false});
+      this.subtaskValue = '';
     }
   }
 
-  clearInput() {
-    let input = document.querySelector('.subtask-input');
+
+  createTask() {
+    console.log(this.newTask);
+  }
+
+  clearForm() {
+
   }
 
 }
