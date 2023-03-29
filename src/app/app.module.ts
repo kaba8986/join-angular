@@ -12,6 +12,7 @@ import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ImpressComponent } from './pages/impress/impress.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddContactComponent } from './components/add-contact/add-contact.component';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BoardComponent,
     AddTaskComponent,
     ContactsComponent,
-    ImpressComponent
+    ImpressComponent,
+    AddContactComponent
   ],
   imports: [
     AppRoutingModule,
