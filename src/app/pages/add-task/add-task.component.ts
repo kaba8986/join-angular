@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Contact } from 'src/app/models/contact.class';
 import { Task } from 'src/app/models/task.class';
 
 @Component({
@@ -16,7 +19,9 @@ export class AddTaskComponent implements OnInit {
   assignments = new FormControl('');
 
   categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
-  allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
+  // allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
+
+  allContacts$: Observable<Contact[]>;
 
   priorities: any = [
     { name: 'High', value: 'high', color: 'red' },
@@ -25,8 +30,11 @@ export class AddTaskComponent implements OnInit {
   ]
 
 
-  constructor() {
+  constructor(
+    public _firestore: AngularFirestore
+  ) {
     this.minDate = new Date();
+    this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({idField: 'id'});
   }
 
   ngOnInit(): void {
@@ -45,7 +53,8 @@ export class AddTaskComponent implements OnInit {
 
 
   createTask() {
-    console.log(this.newTask);
+    this.newTask.assignments = this.assignments.value;
+    this._firestore.collection('tasks').add(this.newTask.toJSON());   
   }
 
 

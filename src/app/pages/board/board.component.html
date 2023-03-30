@@ -12,9 +12,9 @@
     </div>
   </div>
   <div class="main-content">
-    <div *ngFor="let i of [1, 2, 3, 4]" class="task-column">
+    <div *ngFor="let level of levels" class="task-column">
       <div class="column-head">
-        <span>Column-Title</span>
+        <span>{{level}}</span>
         <mat-icon>add</mat-icon>
       </div>
       <div class="column-content"></div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  levels: any = ['To do', 'In progress', 'Awaiting Feedback', 'Done'];
+
   constructor() { }
 
   ngOnInit(): void {

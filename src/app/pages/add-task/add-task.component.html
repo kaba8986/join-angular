@@ -6,17 +6,17 @@
     <div class="left-side">
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Title">
+        <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput [(ngModel)]="newTask.description" name="description"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-        <mat-select  [(ngModel)]="newTask.category" name="category">
+        <mat-select [(ngModel)]="newTask.category" name="category">
           <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -31,7 +31,8 @@
               (+{{(assignments.value?.length || 0) - 1}} {{assignments.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let contact of allContacts" [value]="contact">{{contact}}</mat-option>
+          <mat-option *ngFor="let contact of allContacts$ | async" [value]="contact">{{contact.lastName}},
+            {{contact.firstName}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -64,7 +65,8 @@
         <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
       </mat-form-field>
       <section class="subtask-list">
-        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks" [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
+        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks" [checked]="sub.checked"
+          [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
       </section>
       <div class="button-line">
         <button class="clear-form" type="reset" (click)="clearForm()">Clear</button>
