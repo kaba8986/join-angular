@@ -19,7 +19,11 @@ h2 {
 
 h3 {
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
+  margin: unset;
+}
+
+h4 {
   margin: unset;
 }
 
@@ -27,6 +31,9 @@ a {
   color: $theme-color-font;
 }
 
+p {
+  margin: unset;
+}
 .mb-32 {
   margin-bottom: 64px;
 }

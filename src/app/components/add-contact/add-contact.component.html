@@ -25,7 +25,7 @@
                 <input matInput placeholder="Phone" name="phone"  [(ngModel)]="newContact.phone">
             </mat-form-field>
             <div class="button-line">
-                <button class="clear-form" type="reset">Clear</button>
+                     <button mat-button class="cancel-form" mat-dialog-close>Cancel</button>
                 <button class="create-task" (click)="createContact()">Create Task</button>
               </div>
         </form>

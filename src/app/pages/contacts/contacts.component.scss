@@ -25,6 +25,12 @@ mat-card {
   cursor: pointer;
 }
 
+.card-pic {
+  border: 3px solid #fff;
+  box-shadow: 0 3px 5px rgba($color: #000000, $alpha: 0.1);
+}
+
+
 .mat-card-title {
   font-size: 16px;
   font-weight: 400;
@@ -63,8 +69,67 @@ mat-card {
       font-size: 27px;
     }
   }
-
 }
+
+.contact-details {
+  // border: 1px solid green;
+  margin-top: 64px;
+
+  .close {
+    font-size: 40px;
+    cursor: pointer;
+  }
+
+  .main-profile {
+    padding: 32px 0;
+    display: flex;
+    align-items: center;
+
+    .contact-details-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      margin-right: 32px;
+      box-shadow: 0 3px 5px rgba($color: #000000, $alpha: 0.1);
+    }
+
+    div {
+      font-size: 27px;
+
+      span {
+        font-size: 40px;
+        color: $theme-color-font;
+      }
+    }
+  }
+
+  .contact-information {
+
+ 
+    div {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+
+        &:hover {
+          color: $theme-color-font;
+        }
+      }
+    }
+
+    h4 {
+      padding: 32px 0 10px 0;
+    }
+  }
+}
+
 
 .add-contact {
   position: absolute;

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="address-book">
-    <mat-card *ngFor="let contact of allContacts$ | async" [routerLink]="['/contacts']" (click)="show(contact)">
+    <mat-card *ngFor="let contact of allContacts$ | async" (click)="showContact(contact)">
       <mat-card-header>
-        <img src="assets/img/user_anonym.svg" mat-card-avatar>
+        <img class="card-pic" src="assets/img/user_anonym.svg" mat-card-avatar>
         <mat-card-title>{{contact.lastName}}, {{contact.firstName}}</mat-card-title>
         <mat-card-subtitle><a>{{contact.email}}</a></mat-card-subtitle>
       </mat-card-header>
@@ -14,6 +14,30 @@
       <h1>Contacts</h1>
       <span class="divider"></span>
       <span class="subtitle">Better with a team !</span>
+    </div>
+    <div class="contact-details" *ngIf="currContact != ''">
+      <mat-icon class="close" (click)="close()">close</mat-icon>
+      <div class="main-profile">
+        <img class="contact-details-pic" src="assets/img/user_anonym.svg">
+        <div>{{currContact.firstName}} <br>
+         <span>{{currContact.lastName}}</span> 
+        </div>
+      </div>
+      <div class="contact-information">
+        <h3>Contact Information</h3>
+        <div>
+          <span class="edit-contact">
+            <mat-icon>edit</mat-icon> Edit Contact
+          </span>
+          <span class="delete-contact">
+            <mat-icon>delete_outlined</mat-icon> Delete Contact
+          </span>
+        </div>
+        <h4>Email</h4>
+        <a href="mailto: {{currContact.email}}">{{currContact.email}}</a>
+        <h4>Phone</h4>
+        <p>{{currContact.phone}}</p>
+      </div>
     </div>
     <button class="add-contact" (click)="openDialog()">New Contact <mat-icon>person_add</mat-icon></button>
   </div>
