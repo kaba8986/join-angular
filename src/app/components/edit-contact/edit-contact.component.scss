@@ -1,0 +1,115 @@
+@import '/src/app/themes/themes.scss';
+
+.container {
+    display: flex;
+    border-radius: 8px;
+}
+
+
+.logo-box {
+    background-color: $theme-color;
+    color: #fff;
+    padding: 32px;
+    border-radius: 4px;
+    width: 360px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    h2, h3 {
+        color: #fff !important;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 8px;
+    }
+    
+    .divider {
+      height: 3px;
+      width: 100px;
+      background-color: $theme-color-font;
+      margin-top: 8px;
+    }
+}
+
+.form-box {
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 16px;
+    width: 60%;
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        padding: 16px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+.contact-form {
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-300 {
+  width: 300px;
+}
+
+
+
+.button-line {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 32px;
+  
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 21px;
+      font-weight: 500;
+      background-color: $theme-color;
+      color: #fff;
+      transition: 0.125s;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: $theme-color-font;
+        transition: 0.125s;
+      }
+    }
+  
+    .cancel-form {
+      border: 1px solid $theme-color;
+      color: $theme-color;
+      background: #fff;
+  
+      &:hover {
+        border: 1px solid $theme-color-font;
+        color: $theme-color-font;
+        background-color: #fff;
+      }
+    }
+  }

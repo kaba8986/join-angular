@@ -1,1 +1,33 @@
-<p>edit-contact works!</p>
+<div class="container">
+  <div class="logo-box">
+      <img src="assets/img/Join_Logo.svg" alt="">
+      <h2>Add Contact</h2>
+      <h3>Tasks are better with a team</h3>
+      <div class="divider"></div>
+  </div>
+  <div class="form-box">
+      <img src="assets/img/user_anonym.svg" alt="">
+      <form class="contact-form">
+          <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Firstname</mat-label>
+              <input matInput placeholder="Name" name="firstName" [(ngModel)]="currContact.firstName">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Lastname</mat-label>
+              <input matInput placeholder="Name" name="lastName" [(ngModel)]="currContact.lastName">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" name="email"  [(ngModel)]="currContact.email">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Phone</mat-label>
+              <input matInput placeholder="Phone" name="phone"  [(ngModel)]="currContact.phone">
+          </mat-form-field>
+          <div class="button-line">
+                   <button mat-button class="cancel-form" mat-dialog-close>Cancel</button>
+              <button class="create-task" (click)="updateContact()">Save</button>
+            </div>
+      </form>
+  </div>
+</div>

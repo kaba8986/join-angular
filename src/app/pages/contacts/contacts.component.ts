@@ -9,6 +9,7 @@ import { collectionData } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
 import { Router } from '@angular/router';
 import { DeleteContactComponent } from 'src/app/components/delete-contact/delete-contact.component';
+import { EditContactComponent } from 'src/app/components/edit-contact/edit-contact.component';
 
 
 
@@ -52,8 +53,13 @@ export class ContactsComponent implements OnInit {
     dialogRef.componentInstance.contactId = this.currContact.id;
   }
 
+  openEditDialog() {
+    const dialogRef = this.dialog.open(EditContactComponent);
+    dialogRef.componentInstance.currContact = this.currContact;
+    dialogRef.componentInstance.contactId = this.currContact.id;
+  }
+
   showContact (obj: any) {
-   console.log(obj);
    this.currContact = obj;
   }
 

@@ -10,11 +10,11 @@
         <form class="contact-form">
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Firstname</mat-label>
-                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.firstName">
+                <input matInput placeholder="Name" name="firstName" [(ngModel)]="newContact.firstName">
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Lastname</mat-label>
-                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.lastName">
+                <input matInput placeholder="Name" name="lastName" [(ngModel)]="newContact.lastName">
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Email</mat-label>
@@ -26,7 +26,7 @@
             </mat-form-field>
             <div class="button-line">
                      <button mat-button class="cancel-form" mat-dialog-close>Cancel</button>
-                <button class="create-task" (click)="createContact()">Create Task</button>
+                <button class="create-task" (click)="createContact()">Create Contact</button>
               </div>
         </form>
     </div>
