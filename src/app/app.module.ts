@@ -25,7 +25,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore} from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
+import { DeleteContactComponent } from './components/delete-contact/delete-contact.component';
+import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 
 
 
@@ -41,7 +42,8 @@ import { ContactDetailsComponent } from './pages/contact-details/contact-details
     ContactsComponent,
     ImpressComponent,
     AddContactComponent,
-    ContactDetailsComponent
+    DeleteContactComponent,
+    EditContactComponent
   ],
   imports: [
     AppRoutingModule,

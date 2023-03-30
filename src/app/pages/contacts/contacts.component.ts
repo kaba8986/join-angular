@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { collectionData } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
 import { Router } from '@angular/router';
+import { DeleteContactComponent } from 'src/app/components/delete-contact/delete-contact.component';
 
 
 
@@ -44,6 +45,11 @@ export class ContactsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddContactComponent);
+  }
+
+  openDeleteDialog() {
+    const dialogRef = this.dialog.open(DeleteContactComponent);
+    dialogRef.componentInstance.contactId = this.currContact.id;
   }
 
   showContact (obj: any) {
