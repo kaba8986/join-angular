@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddContactComponent } from 'src/app/components/add-contact/add-contact.component';
-import { AddTaskComponent } from '../add-task/add-task.component';
+import { Contact } from 'src/app/models/contact.class';
+
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-contacts',
@@ -10,9 +15,14 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 })
 export class ContactsComponent implements OnInit {
 
+  allContacts$: Observable<Contact[]>;
+
   constructor(
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private _firestore: AngularFirestore
+  ) { 
+    this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges();
+  }
 
   ngOnInit(): void {
   }

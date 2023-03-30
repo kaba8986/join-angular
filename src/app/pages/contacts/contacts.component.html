@@ -1,6 +1,7 @@
 <div class="container">
   <div class="address-book">
-
+    <div *ngFor="let contact of allContacts$ | async">{{contact.name}}</div>
+    
   </div>
   <div class="contacts-display">
     <div class="headline">

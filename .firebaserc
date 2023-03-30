@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "join-23b5e": {
+      "hosting": {
+        "join-angular": [
+          "join-23b5e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "join-23b5e"
+  }
+}
