@@ -67,7 +67,7 @@
         <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks" [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
       </section>
       <div class="button-line">
-        <button class="clear-form" (click)="clearForm()">Clear</button>
+        <button class="clear-form" type="reset" (click)="clearForm()">Clear</button>
         <button class="create-task" (click)="createTask()">Create Task</button>
       </div>
 

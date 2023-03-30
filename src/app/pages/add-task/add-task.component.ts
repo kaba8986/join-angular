@@ -39,13 +39,14 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  clearForm() {
+    this.newTask = new Task();
+  }
+
 
   createTask() {
     console.log(this.newTask);
   }
 
-  clearForm() {
-
-  }
 
 }

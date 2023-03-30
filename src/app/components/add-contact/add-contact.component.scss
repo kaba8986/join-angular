@@ -9,11 +9,30 @@
 .logo-box {
     background-color: $theme-color;
     color: #fff;
-    padding: 16px;
+    padding: 32px;
     border-radius: 4px;
+    width: 360px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
 
-    h1 {
+    h2, h3 {
         color: #fff !important;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 8px;
+    }
+    
+    .divider {
+      height: 3px;
+      width: 100px;
+      background-color: $theme-color-font;
+      margin-top: 8px;
     }
 }
 
@@ -24,17 +43,33 @@
     gap: 32px;
     padding: 16px;
     width: 60%;
-    margin-left: 16px;
+    margin-left: 32px;
 
     img {
         width: 120px;
         height: 120px;
+        border-radius: 50%;
     }
 
     .contact-form {
         display: flex;
         flex-direction: column;
     }
+
+}
+
+.contact-form {
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-300 {
+  width: 300px;
 }
 
 
@@ -43,6 +78,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 16px;
+    margin-top: 16px;
   
     button {
       display: flex;

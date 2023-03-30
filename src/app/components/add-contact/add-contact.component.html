@@ -1,27 +1,27 @@
 <div class="container">
     <div class="logo-box">
-        <img src="" alt="">
-        <h1>Add Contact</h1>
-        <h2>Tasks are better with a team</h2>
-        <span class="divider"></span>
+        <img src="assets/img/Join_Logo.svg" alt="">
+        <h2>Add Contact</h2>
+        <h3>Tasks are better with a team</h3>
+        <div class="divider"></div>
     </div>
     <div class="form-box">
-        <img src="" alt="">
+        <img src="assets/img/user_anonym.svg" alt="">
         <form class="contact-form">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Name">
+                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.name">
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email">
+                <input matInput placeholder="Email" name="email"  [(ngModel)]="newContact.email">
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone">
+                <input matInput placeholder="Phone" name="phone"  [(ngModel)]="newContact.phone">
             </mat-form-field>
             <div class="button-line">
-                <button class="clear-form" (click)="clearForm()">Clear</button>
+                <button class="clear-form" type="reset">Clear</button>
                 <button class="create-task" (click)="createContact()">Create Task</button>
               </div>
         </form>

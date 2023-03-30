@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Contact } from 'src/app/models/contact.class';
 
 @Component({
   selector: 'app-add-contact',
@@ -7,17 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddContactComponent implements OnInit {
 
+  newContact: Contact = new Contact();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  clearForm() {
-
-  }
-
   createContact() {
-    
+    console.log(this.newContact);
   }
 
 }
