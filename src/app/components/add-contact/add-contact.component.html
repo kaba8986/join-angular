@@ -1,1 +1,29 @@
-<p>add-contact works!</p>
+<div class="container">
+    <div class="logo-box">
+        <img src="" alt="">
+        <h1>Add Contact</h1>
+        <h2>Tasks are better with a team</h2>
+        <span class="divider"></span>
+    </div>
+    <div class="form-box">
+        <img src="" alt="">
+        <form class="contact-form">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Phone">
+            </mat-form-field>
+            <div class="button-line">
+                <button class="clear-form" (click)="clearForm()">Clear</button>
+                <button class="create-task" (click)="createContact()">Create Task</button>
+              </div>
+        </form>
+    </div>
+</div>
