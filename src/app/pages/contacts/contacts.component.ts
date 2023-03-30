@@ -5,6 +5,8 @@ import { Contact } from 'src/app/models/contact.class';
 
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { Observable } from 'rxjs';
+import { collectionData } from '@angular/fire/firestore';
+import { collection } from 'firebase/firestore';
 
 
 
@@ -17,11 +19,12 @@ export class ContactsComponent implements OnInit {
 
   allContacts$: Observable<Contact[]>;
 
+
   constructor(
     public dialog: MatDialog,
     private _firestore: AngularFirestore
   ) { 
-    this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges();
+    this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({ idField: 'id' });
   }
 
   ngOnInit(): void {
@@ -29,5 +32,9 @@ export class ContactsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddContactComponent);
+  }
+
+  show (obj: any) {
+   console.log(obj.id);
   }
 }

@@ -1,5 +1,7 @@
 @import '../../themes/themes.scss';
 
+
+
 .container {
   position: relative;
   box-sizing: border-box;
@@ -14,14 +16,34 @@
   box-sizing: border-box;
   min-width: 380px;
   height: 100%;
-  border: 1px solid red;
-  background: white;
+  border-right: 1px solid lightgray;
+  background: rgb(238, 238, 238);
+  padding: 16px;
 } 
+
+mat-card {
+  cursor: pointer;
+}
+
+.mat-card-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: $theme-color;
+}
+
+.mat-card-subtitle {
+  margin: unset;
+  font-size: 14px;
+
+  a {
+    text-decoration: none;
+  }
+}
 
 .contacts-display {
   position: relative;
   width: 100%;
-  border: 1px solid green;
+  // border: 1px solid green;
   padding: 40px;
 
   .headline {

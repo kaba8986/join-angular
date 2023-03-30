@@ -25,6 +25,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore} from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 
 
 
@@ -39,7 +40,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     AddTaskComponent,
     ContactsComponent,
     ImpressComponent,
-    AddContactComponent
+    AddContactComponent,
+    ContactDetailsComponent
   ],
   imports: [
     AppRoutingModule,

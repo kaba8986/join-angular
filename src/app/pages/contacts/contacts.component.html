@@ -1,7 +1,13 @@
 <div class="container">
   <div class="address-book">
-    <div *ngFor="let contact of allContacts$ | async">{{contact.name}}</div>
-    
+    <mat-card *ngFor="let contact of allContacts$ | async" [routerLink]="['/contacts']" (click)="show(contact)">
+      <mat-card-header>
+        <img src="assets/img/user_anonym.svg" mat-card-avatar>
+        <mat-card-title>{{contact.lastName}}, {{contact.firstName}}</mat-card-title>
+        <mat-card-subtitle><a>{{contact.email}}</a></mat-card-subtitle>
+      </mat-card-header>
+      <!-- <mat-card-content>{{contact.name}}</mat-card-content> -->
+    </mat-card>
   </div>
   <div class="contacts-display">
     <div class="headline">
@@ -9,6 +15,6 @@
       <span class="divider"></span>
       <span class="subtitle">Better with a team !</span>
     </div>
-    <button class="add-contact" (click)="openDialog()">New Contact <mat-icon>person_add</mat-icon> </button>
+    <button class="add-contact" (click)="openDialog()">New Contact <mat-icon>person_add</mat-icon></button>
   </div>
 </div>

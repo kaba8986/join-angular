@@ -9,8 +9,12 @@
         <img src="assets/img/user_anonym.svg" alt="">
         <form class="contact-form">
             <mat-form-field appearance="outline" class="w-full">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.name">
+                <mat-label>Firstname</mat-label>
+                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.firstName">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Lastname</mat-label>
+                <input matInput placeholder="Name" name="name" [(ngModel)]="newContact.lastName">
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Email</mat-label>
