@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.class';
 import { Task } from 'src/app/models/task.class';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-add-task',
@@ -54,6 +55,7 @@ export class AddTaskComponent implements OnInit {
 
   createTask() {
     this.newTask.assignments = this.assignments.value;
+    this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
   }
 

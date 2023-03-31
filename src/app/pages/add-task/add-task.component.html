@@ -43,14 +43,14 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-side">
-      <!-- <mat-form-field appearance="outline" class="date-picker" class="full-width">
+      <mat-form-field appearance="outline" class="date-picker" class="full-width">
         <mat-label>Due Date</mat-label>
         <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate"
-          [min]="minDate">
+          [min]="minDate" name="datepicker">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field> -->
+      </mat-form-field> 
 
       <mat-form-field appearance="outline">
         <mat-label>Priority</mat-label>

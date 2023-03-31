@@ -21,6 +21,9 @@
         <div *ngFor="let task of allTasks$ | async">
           <mat-card class="task-card" *ngIf="task.stage === i">
             <div class="card-header">
+              <div class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDuedate(task.dueDateMilli) | date}} <br> 
+                <span *ngIf="task.dueDateMilli - today < 0">( overdue ! )</span> 
+              </div>
               <p class="task-category">{{task.category}}</p>
               <p class="task-title">{{task.title}}</p>
             </div>
