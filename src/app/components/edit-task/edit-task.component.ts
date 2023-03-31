@@ -16,7 +16,7 @@ export class EditTaskComponent implements OnInit {
   loading: boolean = false;
   currTask: Task = new Task();
   minDate: Date;
-  date;
+  date: FormControl;
   subtaskValue: string = '';
   assignments = new FormControl('');
 
@@ -37,11 +37,11 @@ export class EditTaskComponent implements OnInit {
   ) { 
     this.minDate = new Date();
     this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({idField: 'id'});
-    this.date = new FormControl(new Date(this.currTask.dueDateMilli));
+    this.date = new FormControl(new Date());
   }
 
   ngOnInit(): void {
-    
+    console.log(this.date);
   }
 
   addSubtask(value: string) {
