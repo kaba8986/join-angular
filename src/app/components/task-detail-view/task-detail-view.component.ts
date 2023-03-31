@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.class';
 import { DeleteTaskComponent } from '../delete-task/delete-task.component';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
   selector: 'app-task-detail-view',
@@ -33,7 +34,9 @@ export class TaskDetailViewComponent implements OnInit {
   }
 
   openEditDialog(obj: any) {
-    
+    this.dialog.closeAll();
+    const dialogRef = this.dialog.open(EditTaskComponent);
+    dialogRef.componentInstance.currTask = obj;
   }
 
 }

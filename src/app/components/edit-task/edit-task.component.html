@@ -1,1 +1,70 @@
-<p>edit-task works!</p>
+
+<form class="add-task-form">
+  <div class="left-side">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" [(ngModel)]="currTask.title" name="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="currTask.description" name="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="currTask.category" name="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Assigned to</mat-label>
+      <mat-select [formControl]="assignments" multiple>
+        <mat-select-trigger>
+          {{assignments.value?.[0] || ''}}
+          <span *ngIf="(assignments.value?.length || 0) > 1" class="example-additional-selection">
+            (+{{(assignments.value?.length || 0) - 1}} {{assignments.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let contact of allContacts$ | async" [value]="contact">{{contact.lastName}},
+          {{contact.firstName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-side">
+    <mat-form-field appearance="outline" class="date-picker" class="full-width">
+      <mat-label>Due Date</mat-label>
+      <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="currTask.dueDate"
+        [min]="minDate" name="datepicker" [value]="date.value">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> 
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select [(value)]="currTask.priority">
+        <mat-option *ngFor="let prio of priorities" [value]="prio.value">{{prio.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Subtasks</mat-label>
+      <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
+      <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
+    </mat-form-field>
+    <section class="subtask-list">
+      <mat-checkbox class="single-subtask-margin" *ngFor="let sub of currTask.subTasks" [checked]="sub.checked"
+        [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
+    </section>
+    <div class="button-line">
+      <button class="clear-form" mat-button mat-dialog-close>Close</button>
+      <button class="create-task" (click)="saveTask()">Save</button>
+    </div>
+
+  </div>
+</form>
