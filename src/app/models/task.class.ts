@@ -1,6 +1,6 @@
-import { Contact } from "./contact.class";
 
 export class Task {
+  stage: number;
   title: string;
   description: string;
   category: string;
@@ -11,9 +11,9 @@ export class Task {
   creationDateMilli: number;
   priority: string;
   subTasks: any;
-  stage: number;
 
   constructor(obj?: any) {
+    this.stage = obj ? obj.stage : 0;
     this.title = obj ? obj.title : "";
     this.description = obj ? obj.description : "";
     this.category = obj ? obj.category : "General";
@@ -24,11 +24,11 @@ export class Task {
     this.creationDateMilli = obj ? obj.creationDateMilli : 0;
     this.priority = obj ? obj.dueDateMilli : 'low';
     this.subTasks = obj ? obj.subTasks : [];
-    this.stage = obj ? obj.stage : 0;
   }
 
   public toJSON() {
     return {
+      stage: this.stage,
       title: this.title,
       description: this.description,
       category: this.category,
@@ -38,8 +38,7 @@ export class Task {
       creationDate: this.creationDate,
       creationDateMilli: this.creationDateMilli,
       priority: this.priority,
-      subTasks: this.subTasks,
-      stage: this.stage
+      subTasks: this.subTasks
     }
   }
 }

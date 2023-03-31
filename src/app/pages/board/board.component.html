@@ -12,12 +12,24 @@
     </div>
   </div>
   <div class="main-content">
-    <div *ngFor="let level of levels" class="task-column">
+    <div *ngFor="let level of levels; let i = index" class="task-column">
       <div class="column-head">
         <span>{{level}}</span>
         <mat-icon>add</mat-icon>
       </div>
-      <div class="column-content"></div>
+      <div class="column-content">
+        <div *ngFor="let task of allTasks$ | async">
+          <mat-card class="task-card" *ngIf="task.stage === i">
+            <div class="card-header">
+              <p class="task-category">{{task.category}}</p>
+              <p class="task-title">{{task.title}}</p>
+            </div>
+            <div class="card-content">
+              <p class="task-description">{{task.description}}</p>
+            </div>
+          </mat-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>
