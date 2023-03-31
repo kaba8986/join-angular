@@ -18,7 +18,7 @@ export class TaskDetailViewComponent implements OnInit {
     console.log(this.currTask);
   }
 
-  getDuedate(millis: number) {
+  getDate(millis: number) {
     return new Date(millis);
   }
 

@@ -56,6 +56,7 @@ export class AddTaskComponent implements OnInit {
   createTask() {
     this.newTask.assignments = this.assignments.value;
     this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
   }
 

@@ -1,12 +1,25 @@
 <div class="container">
   <div class="card-header">
-    <div class="task-due-date" [class.due-date-alert]="currTask.dueDateMilli - today < 0" >{{getDuedate(currTask.dueDateMilli) | date}} <br> 
-      <span *ngIf="currTask.dueDateMilli - today < 0">( overdue ! )</span> 
-    </div>
     <p class="task-category">{{currTask.category}}</p>
-    <p class="task-title">{{currTask.title}}</p>
+    <div class="edit-box">
+      <span matTooltip="edit Task"><mat-icon>edit</mat-icon></span>
+      <span matTooltip="delete Task"><mat-icon>delete_outlined</mat-icon></span>
+    </div>
   </div>
   <div class="card-content">
+    <p class="task-title">{{currTask.title}}</p>
     <p class="task-description">{{currTask.description}}</p>
+    <div class="divider"></div>
+  </div>
+  <div class="card-subline">
+    <h4>Assigned to:</h4>
+    <ul class="assignments">
+      <li *ngFor="let person of currTask.assignments"><mat-icon>arrow_right</mat-icon> {{person.firstName}} {{person.lastName}}</li>
+    </ul>
+    <h4>Created at: <span> {{getDate(currTask.creationDateMilli) | date}}</span></h4>
+    <h4>Due date: 
+      <span [class.due-date-alert]="currTask.dueDateMilli - today < 0"> {{getDate(currTask.dueDateMilli) | date}}</span>
+      <span class="due-date-alert" *ngIf="currTask.dueDateMilli - today < 0"> ( overdue ! )</span> 
+    </h4>
   </div>
 </div>

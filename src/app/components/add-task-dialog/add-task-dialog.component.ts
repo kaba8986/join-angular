@@ -58,6 +58,7 @@ export class AddTaskDialogComponent implements OnInit {
     this.newTask.stage = this.stage;
     this.newTask.assignments = this.assignments.value;
     this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
   }
 

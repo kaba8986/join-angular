@@ -124,12 +124,6 @@
       margin-bottom: 32px;
     }
 
-    .task-title {
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 16px;
-    }
-
     .task-due-date {
       font-size: 14px;
       // font-style: italic;
@@ -143,6 +137,12 @@
   }
 
   .card-content {
+
+    .task-title {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
 
     .task-description {
       font-size: 14px;

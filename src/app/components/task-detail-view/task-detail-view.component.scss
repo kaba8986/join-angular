@@ -1,17 +1,41 @@
+@import '/src/app/themes/themes.scss';
+
 .container {
   width: 600px;
 }
 
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  .edit-box {
+    display: flex;
+    gap: 16px;
+
+    span {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: unset;
+
+
+      &:hover {
+        color: $theme-color-font;
+      }
+    }
+  }
+}
+
 
 .task-category {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 300;
-  margin-bottom: 32px;
 }
 
 .task-title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 16px;
 }
 
@@ -29,12 +53,45 @@
 
 .card-content {
 
+
   .task-description {
-    font-size: 14px;
+    font-size: 16px;
+    padding-bottom: 32px;
   }
+}
+
+.card-subline {
+  margin-top: 16px;
+  padding-bottom: 8px;
+
+  .assignments {
+
+    li {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      color: $theme-color-font;
+    }
+  }
+}
+
+.divider {
+  height: 2px;
+  width: 100%;
+  background-color: rgb(236, 236, 236);
 }
 
 .due-date-alert {
   color: rgb(199, 0, 0) !important;
   font-weight: 600 !important;
+}
+
+h4 {
+  font-weight: 500;
+  margin: 4px 0;
+
+  span {
+    font-weight: 400;
+    color: grey;
+  }
 }

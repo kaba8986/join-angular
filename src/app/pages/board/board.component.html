@@ -25,9 +25,9 @@
                 <span *ngIf="task.dueDateMilli - today < 0">( overdue ! )</span> 
               </div>
               <p class="task-category">{{task.category}}</p>
-              <p class="task-title">{{task.title}}</p>
             </div>
             <div class="card-content">
+              <p class="task-title">{{task.title}}</p>
               <p class="task-description">{{task.description}}</p>
             </div>
           </mat-card>
