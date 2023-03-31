@@ -1,0 +1,85 @@
+@import '/src/app/themes/themes.scss';
+
+
+.add-task-form {
+  // border: 1px solid red;
+  // height: calc(100% - 145px);
+  display: flex;
+  
+
+  .left-side {
+    // flex: 1;
+    // border: 1px solid blue;
+    box-sizing: border-box;
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 64px;
+  }
+
+  .right-side {
+    // flex: 1;
+    // border: 1px solid blue;
+    box-sizing: border-box;
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+  }
+}
+
+
+.add-subtask {
+  cursor: pointer;
+}
+
+.subtask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 32px;
+  overflow-wrap: break-all;
+}
+
+.single-subtask-margin {
+  margin-left: 32px;
+}
+
+.button-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 21px;
+    font-weight: 500;
+    background-color: $theme-color;
+    color: #fff;
+    transition: 0.125s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $theme-color-font;
+      transition: 0.125s;
+    }
+  }
+
+  .clear-form {
+    border: 1px solid $theme-color;
+    color: $theme-color;
+    background: #fff;
+
+    &:hover {
+      border: 1px solid $theme-color-font;
+      color: $theme-color-font;
+      background-color: #fff;
+    }
+  }
+}

@@ -27,6 +27,9 @@ import { provideFirestore,getFirestore} from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DeleteContactComponent } from './components/delete-contact/delete-contact.component';
 import { EditContactComponent } from './components/edit-contact/edit-contact.component';
+import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 
 
 
@@ -43,7 +46,10 @@ import { EditContactComponent } from './components/edit-contact/edit-contact.com
     ImpressComponent,
     AddContactComponent,
     DeleteContactComponent,
-    EditContactComponent
+    EditContactComponent,
+    AddTaskDialogComponent,
+    EditTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     AppRoutingModule,

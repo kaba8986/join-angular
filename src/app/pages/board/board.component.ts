@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/app/models/task.class';
 import { DatePipe } from '@angular/common';
+import { MatDialog} from '@angular/material/dialog';
+import { AddTaskDialogComponent } from 'src/app/components/add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -17,18 +19,21 @@ export class BoardComponent implements OnInit {
 
 
   constructor(
-    private _firestore: AngularFirestore
+    private _firestore: AngularFirestore,
+    private dialog: MatDialog
   ) { 
     this.allTasks$ = _firestore.collection<Task>('tasks').valueChanges({idField: 'id'});
-
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   getDuedate(millis: number) {
     return new Date(millis);
+  }
+
+  openDialog(stage: number) {
+    const dialogRef = this.dialog.open(AddTaskDialogComponent);
+    dialogRef.componentInstance.stage = stage;
   }
 
 }

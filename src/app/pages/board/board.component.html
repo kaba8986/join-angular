@@ -15,7 +15,7 @@
     <div *ngFor="let level of levels; let i = index" class="task-column">
       <div class="column-head">
         <span>{{level}}</span>
-        <mat-icon>add</mat-icon>
+        <mat-icon (click)="openDialog(i)">add</mat-icon>
       </div>
       <div class="column-content">
         <div *ngFor="let task of allTasks$ | async">
