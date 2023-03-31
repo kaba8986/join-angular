@@ -1,0 +1,40 @@
+.container {
+  width: 600px;
+}
+
+
+.task-category {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.task-due-date {
+  font-size: 14px;
+  // font-style: italic;
+  color: grey;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  line-height: 20px;
+}
+
+
+.card-content {
+
+  .task-description {
+    font-size: 14px;
+  }
+}
+
+.due-date-alert {
+  color: rgb(199, 0, 0) !important;
+  font-weight: 600 !important;
+}

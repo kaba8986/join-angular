@@ -141,9 +141,21 @@
       line-height: 20px;
     }
   }
+
+  .card-content {
+
+    .task-description {
+      font-size: 14px;
+    }
+  }
 }
 
 .due-date-alert {
   color: rgb(199, 0, 0) !important;
   font-weight: 600 !important;
 }
+
+.d-none {
+  display: none !important;
+}
+

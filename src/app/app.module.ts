@@ -30,6 +30,7 @@ import { EditContactComponent } from './components/edit-contact/edit-contact.com
 import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-dialog.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
+import { TaskDetailViewComponent } from './components/task-detail-view/task-detail-view.component';
 
 
 
@@ -49,7 +50,8 @@ import { DeleteTaskComponent } from './components/delete-task/delete-task.compon
     EditContactComponent,
     AddTaskDialogComponent,
     EditTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    TaskDetailViewComponent
   ],
   imports: [
     AppRoutingModule,

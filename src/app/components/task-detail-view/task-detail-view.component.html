@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card-header">
+    <div class="task-due-date" [class.due-date-alert]="currTask.dueDateMilli - today < 0" >{{getDuedate(currTask.dueDateMilli) | date}} <br> 
+      <span *ngIf="currTask.dueDateMilli - today < 0">( overdue ! )</span> 
+    </div>
+    <p class="task-category">{{currTask.category}}</p>
+    <p class="task-title">{{currTask.title}}</p>
+  </div>
+  <div class="card-content">
+    <p class="task-description">{{currTask.description}}</p>
+  </div>
+</div>

@@ -35,10 +35,6 @@
             {{contact.firstName}}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <div class="selected-to">
-        <span>Selected:</span>
-      </div>
     </div>
 
     <!-- RIGHT SIDE -->
@@ -69,7 +65,7 @@
           [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
       </section>
       <div class="button-line">
-        <button class="clear-form" type="reset" (click)="clearForm()">Clear</button>
+        <button class="clear-form" type="reset" (click)="clearForm()">Close</button>
         <button class="create-task" (click)="createTask()">Create Task</button>
       </div>
 

@@ -5,6 +5,7 @@ import { Task } from 'src/app/models/task.class';
 import { DatePipe } from '@angular/common';
 import { MatDialog} from '@angular/material/dialog';
 import { AddTaskDialogComponent } from 'src/app/components/add-task-dialog/add-task-dialog.component';
+import { TaskDetailViewComponent } from 'src/app/components/task-detail-view/task-detail-view.component';
 
 @Component({
   selector: 'app-board',
@@ -34,6 +35,13 @@ export class BoardComponent implements OnInit {
   openDialog(stage: number) {
     const dialogRef = this.dialog.open(AddTaskDialogComponent);
     dialogRef.componentInstance.stage = stage;
+  }
+
+  openDetailView(obj: any) {
+    console.log(obj.id);
+    const dialogRef = this.dialog.open(TaskDetailViewComponent);
+    dialogRef.componentInstance.taskId = obj.id;
+    dialogRef.componentInstance.currTask = obj;
   }
 
 }
