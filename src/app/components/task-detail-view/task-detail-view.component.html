@@ -2,8 +2,8 @@
   <div class="card-header">
     <p class="task-category">{{currTask.category}}</p>
     <div class="edit-box">
-      <span matTooltip="edit Task"><mat-icon>edit</mat-icon></span>
-      <span matTooltip="delete Task"><mat-icon>delete_outlined</mat-icon></span>
+      <span matTooltip="edit Task"><mat-icon (click)="openEditDialog(currTask)">edit</mat-icon></span>
+      <span matTooltip="delete Task"><mat-icon (click)="openDeleteDialog(currTask)">delete_outlined</mat-icon></span>
     </div>
   </div>
   <div class="card-content">

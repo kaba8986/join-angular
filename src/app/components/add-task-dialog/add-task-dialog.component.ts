@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.class';
 import { Task } from 'src/app/models/task.class';
@@ -32,7 +33,8 @@ export class AddTaskDialogComponent implements OnInit {
   stage: number = 0;
 
   constructor(
-    public _firestore: AngularFirestore
+    public _firestore: AngularFirestore,
+    private dialogRef: MatDialogRef<AddTaskDialogComponent>
   ) { 
     this.minDate = new Date();
     this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({idField: 'id'});
@@ -60,6 +62,7 @@ export class AddTaskDialogComponent implements OnInit {
     this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
     this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
+    this.dialogRef.close();
   }
 
 }

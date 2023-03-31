@@ -1,1 +1,8 @@
-<p>delete-task works!</p>
+<div class="container">
+  <h4>Delete Task</h4>
+  <p>Do you really want to delete this Task?</p>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="warn" (click)="deleteTask()" cdkFocusInitial>Delete</button>
+  </div>
+</div>

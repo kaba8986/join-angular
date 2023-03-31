@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
+import { deleteDoc, doc, getFirestore } from 'firebase/firestore';
+
 
 @Component({
   selector: 'app-delete-task',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteTaskComponent implements OnInit {
 
-  constructor() { }
+  taskId: string = "";
+  db = getFirestore();
+
+  constructor(
+    private dialogRef: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  async deleteTask() {
+    await deleteDoc(doc(this.db, 'tasks', this.taskId));
+    this.dialogRef.closeAll();
   }
 
 }

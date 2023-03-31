@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.class';
+import { DeleteTaskComponent } from '../delete-task/delete-task.component';
 
 @Component({
   selector: 'app-task-detail-view',
@@ -12,7 +14,9 @@ export class TaskDetailViewComponent implements OnInit {
   currTask: Task = new Task();
   today = new Date().getTime();
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     console.log(this.currTask);
@@ -20,6 +24,16 @@ export class TaskDetailViewComponent implements OnInit {
 
   getDate(millis: number) {
     return new Date(millis);
+  }
+
+  openDeleteDialog(obj: any) {
+    const dialogRef = this.dialog.open(DeleteTaskComponent);
+    dialogRef.componentInstance.taskId = obj.id;
+    console.log(this.currTask);
+  }
+
+  openEditDialog(obj: any) {
+    
   }
 
 }
