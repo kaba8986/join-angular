@@ -12,10 +12,19 @@
     <div class="divider"></div>
   </div>
   <div class="card-subline">
-    <h4>Assigned to:</h4>
-    <ul class="assignments">
-      <li *ngFor="let person of currTask.assignments"><mat-icon>arrow_right</mat-icon> {{person.firstName}} {{person.lastName}}</li>
-    </ul>
+    <div class="listings">
+      <div class="assignments">
+        <h4>Assigned to:</h4>
+        <span *ngFor="let person of currTask.assignments"><mat-icon>arrow_right</mat-icon> {{person.firstName}} {{person.lastName}}</span>
+      </div>
+      <div class="subtasks">
+        <h4>Subtasks:</h4>
+        <section class="subtask-list">
+          <mat-checkbox class="single-subtask-margin" *ngFor="let sub of currTask.subTasks" [checked]="sub.checked"
+            [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
+        </section>
+      </div>
+    </div>
     <h4>Created at: <span> {{getDate(currTask.creationDateMilli) | date}}</span></h4>
     <h4>Due date: 
       <span [class.due-date-alert]="currTask.dueDateMilli - today < 0"> {{getDate(currTask.dueDateMilli) | date}}</span>

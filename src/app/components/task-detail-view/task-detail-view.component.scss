@@ -64,13 +64,28 @@
   margin-top: 16px;
   padding-bottom: 8px;
 
-  .assignments {
+  .listings {
+    display: flex;
+  }
 
-    li {
-      list-style-type: none;
+  .assignments,
+  .subtasks {
+
+    width: 50%;
+
+    ul {
+      margin: unset;
+    }
+
+    span {
       display: flex;
       align-items: center;
       color: $theme-color-font;
+    }
+
+    .subtask-list {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
