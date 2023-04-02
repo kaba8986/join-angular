@@ -4,7 +4,12 @@
     <div class="toolbar">
       <span>Kanban Project Management Tool</span>
       <img class="help-img" src="assets/img/help_logo.svg" alt="">
-      <img class="profile-img" src="assets/img/profile_guest.png" alt="">
+      <img class="profile-img" src="assets/img/profile_guest.png" [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Impress</button>
+        <button mat-menu-item routerLink="/login">Login</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
     </div>
     <router-outlet class="outlet-container"></router-outlet>
   </div>

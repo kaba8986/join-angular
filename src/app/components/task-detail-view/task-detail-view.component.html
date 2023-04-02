@@ -19,10 +19,9 @@
       </div>
       <div class="subtasks">
         <h4>Subtasks:</h4>
-        <section class="subtask-list">
-          <mat-checkbox class="single-subtask-margin" *ngFor="let sub of currTask.subTasks" [checked]="sub.checked"
-            [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
-        </section>
+        <div class="subtask-list">
+          <span class="single-subtask-margin" *ngFor="let sub of currTask.subTasks; let i = index"> <mat-icon>arrow_right</mat-icon> {{sub}}</span>
+        </div>
       </div>
     </div>
     <h4>Created at: <span> {{getDate(currTask.creationDateMilli) | date}}</span></h4>

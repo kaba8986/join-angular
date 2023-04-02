@@ -4,7 +4,8 @@ import { Contact } from 'src/app/models/contact.class';
 import { Task } from 'src/app/models/task.class';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { collection, deleteDoc, doc, getFirestore, setDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-edit-task',
@@ -15,10 +16,12 @@ export class EditTaskComponent implements OnInit {
 
   loading: boolean = false;
   currTask: Task = new Task();
+  taskId: string = '';
   minDate: Date;
   date: FormControl;
   subtaskValue: string = '';
   assignments = new FormControl('');
+  db = getFirestore();
 
   categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
   // allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
@@ -41,22 +44,30 @@ export class EditTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.date);
+    console.log(this.currTask);
   }
 
   addSubtask(value: string) {
     if(value) {
-      this.currTask.subTasks.push({text: value, checked: false});
+      this.currTask.subTasks.push(value);
       this.subtaskValue = '';
     }
   }
 
-  saveTask() {
+  removeSubtask(i: number) {
+    this.currTask.subTasks.splice(i, 1);
+    console.log(this.currTask);
+  }
+
+ async saveTask() {
     this.currTask.assignments = this.assignments.value;
     if(this.currTask.dueDate) {
       this.currTask.dueDateMilli = this.currTask.dueDate.getTime();
     }
-    this._firestore.collection('tasks').add(this.currTask.toJSON());   
+
+    const updatedTaskRef = doc(collection(this.db, 'tasks'));
+    await deleteDoc(doc(this.db, 'contacts', this.taskId));
+    await setDoc(updatedTaskRef, this.currTask);
     this.dialogRef.close();
   }
 

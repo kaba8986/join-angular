@@ -1,10 +1,12 @@
 <div class="sidenav-container">
   <img src="assets/img/Join_Logo.svg" alt="">
   <ul class="main-navigation">
-    <li class="active-navigation" [routerLink]="['/summary']"><img src="assets/img/summary_logo.svg">Summary</li>
-    <li [routerLink]="['/board']"><img src="assets/img/board_logo.svg">Board</li>
-    <li [routerLink]="['/add-task']"><img src="assets/img/add_task_logo.svg">Add Task</li>
-    <li [routerLink]="['/contacts']"><img src="assets/img/contacts_logo.svg">Contacts</li>
-    <li [routerLink]="['/impress']"class="legal-notice-link"><img src="assets/img/impressum_icon.svg">Legal Notice</li>
+    <li class="active-navigation" [routerLink]="['/summary']"><span><img src="assets/img/summary_logo.svg"></span>Summary</li>
+    <li [routerLink]="['/board']"><span><img src="assets/img/board_logo.svg"></span>Board</li>
+    <li [routerLink]="['/add-task']"><span><img src="assets/img/add_task_logo.svg"></span>Add Task</li>
+    <li [routerLink]="['/contacts']"><span><img src="assets/img/contacts_logo.svg"></span>Contacts</li>
+    <li [routerLink]="['/login']"><mat-icon>login</mat-icon> Login</li>
+    <li><mat-icon>logout</mat-icon> Logout</li>
+    <li [routerLink]="['/impress']"class="legal-notice-link"><img src="assets/img/impressum_icon.svg">Impress</li>
   </ul>
 </div>

@@ -20,7 +20,7 @@ export class TaskDetailViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.currTask);
+
   }
 
   getDate(millis: number) {
@@ -30,13 +30,13 @@ export class TaskDetailViewComponent implements OnInit {
   openDeleteDialog(obj: any) {
     const dialogRef = this.dialog.open(DeleteTaskComponent);
     dialogRef.componentInstance.taskId = obj.id;
-    console.log(this.currTask);
   }
 
   openEditDialog(obj: any) {
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(EditTaskComponent);
     dialogRef.componentInstance.currTask = obj;
+    dialogRef.componentInstance.taskId = obj.id;
   }
 
 }

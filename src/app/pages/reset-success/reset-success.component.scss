@@ -1,0 +1,26 @@
+@import '/src/app/themes/themes.scss';
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 80px);
+    padding: 40px 80px;
+    overflow-y: scroll;
+    background: #fff;
+  }
+
+  .divider {
+    width: 100px;
+    height: 3px;
+    background-color: $theme-color-font;
+    margin: 16px 0;
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    line-height: 32px;
+}

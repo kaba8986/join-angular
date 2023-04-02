@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Log in</h2>
+    <div class="divider"></div>
+    <form action="">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" name="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" name="password">
+        </mat-form-field>
+        <div class="remember-password">
+            <mat-checkbox class="example-margin">Remember me</mat-checkbox> <br>
+            <a routerLink="/password-forgotten">Forgot my password</a>
+        </div>
+        <div class="button-line">
+            <button class="login">Login</button>
+            <button class="signup" routerLink="/signup">Sign up</button>
+        </div>
+    </form>
+</div>

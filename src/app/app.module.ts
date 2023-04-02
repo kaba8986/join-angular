@@ -31,6 +31,11 @@ import { AddTaskDialogComponent } from './components/add-task-dialog/add-task-di
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 import { TaskDetailViewComponent } from './components/task-detail-view/task-detail-view.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
+import { SuccessComponent } from './pages/success/success.component';
+import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 
 
 
@@ -51,7 +56,12 @@ import { TaskDetailViewComponent } from './components/task-detail-view/task-deta
     AddTaskDialogComponent,
     EditTaskComponent,
     DeleteTaskComponent,
-    TaskDetailViewComponent
+    TaskDetailViewComponent,
+    LoginComponent,
+    SignupComponent,
+    PasswordForgottenComponent,
+    SuccessComponent,
+    ResetSuccessComponent
   ],
   imports: [
     AppRoutingModule,

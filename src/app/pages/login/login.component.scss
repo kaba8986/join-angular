@@ -1,0 +1,75 @@
+@import '/src/app/themes/themes.scss';
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 80px);
+    padding: 40px 80px;
+    overflow-y: scroll;
+    background: #fff;
+  }
+
+  h2 {
+  }
+
+  .divider {
+    width: 100px;
+    height: 3px;
+    background-color: $theme-color-font;
+    margin: 16px 0;
+  }
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.remember-password {
+    padding-bottom: 32px;
+
+    a {
+        text-decoration: none;
+        line-height: 32px;
+    }
+}
+
+
+.button-line {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 21px;
+      font-weight: 500;
+      background-color: $theme-color;
+      color: #fff;
+      transition: 0.125s;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: $theme-color-font;
+        transition: 0.125s;
+      }
+    }
+  
+    .signup {
+      border: 1px solid $theme-color;
+      color: $theme-color;
+      background: #fff;
+  
+      &:hover {
+        border: 1px solid $theme-color-font;
+        color: $theme-color-font;
+        background-color: #fff;
+      }
+    }
+  }

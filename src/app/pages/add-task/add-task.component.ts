@@ -16,6 +16,7 @@ export class AddTaskComponent implements OnInit {
   loading: boolean = false;
   newTask: Task = new Task();
   minDate: Date;
+  date = new FormControl(new Date())
   subtaskValue: string = '';
   assignments = new FormControl('');
 
@@ -43,9 +44,14 @@ export class AddTaskComponent implements OnInit {
 
   addSubtask(value: string) {
     if(value) {
-      this.newTask.subTasks.push({text: value, checked: false});
+      this.newTask.subTasks.push(value);
       this.subtaskValue = '';
     }
+    console.log(this.newTask);
+  }
+
+  removeSubtask(i: number) {
+    this.newTask.subTasks.splice(i, 1);
   }
 
   clearForm() {

@@ -32,6 +32,11 @@
       transition: 0.125s;
       cursor: pointer;
 
+      span,
+      mat-icon {
+        width: 30px;
+      }
+
       img {
         margin: unset;
       }
@@ -45,7 +50,7 @@
 }
 
 .legal-notice-link {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .active-navigation {

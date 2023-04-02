@@ -38,7 +38,6 @@ export class BoardComponent implements OnInit {
   }
 
   openDetailView(obj: any) {
-    console.log(obj.id);
     const dialogRef = this.dialog.open(TaskDetailViewComponent);
     dialogRef.componentInstance.taskId = obj.id;
     dialogRef.componentInstance.currTask = obj;

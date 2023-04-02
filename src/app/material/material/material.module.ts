@@ -12,10 +12,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
 
 const materialComponents: any = [
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, 
-  MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, 
+  MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatRadioModule, 
   MatSelectModule, MatSidenavModule, MatTooltipModule];
 
 

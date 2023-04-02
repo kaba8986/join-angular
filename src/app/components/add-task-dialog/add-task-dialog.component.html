@@ -57,10 +57,9 @@
         <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
         <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
       </mat-form-field>
-      <section class="subtask-list">
-        <mat-checkbox class="single-subtask-margin" *ngFor="let sub of newTask.subTasks" [checked]="sub.checked"
-          [(ngModel)]="sub.checked" name="subtask-checkbox">{{sub.text}}</mat-checkbox>
-      </section>
+      <div class="subtask-list">
+        <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
+      </div>
       <div class="button-line">
         <button class="clear-form" mat-button mat-dialog-close>Close</button>
         <button class="create-task" (click)="createTask()">Create Task</button>

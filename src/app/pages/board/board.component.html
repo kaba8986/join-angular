@@ -22,7 +22,7 @@
           <mat-card class="task-card" [class.d-none]="task.stage !== i" (click)="openDetailView(task)">
             <div class="card-header">
               <div class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDuedate(task.dueDateMilli) | date}} <br> 
-                <span *ngIf="task.dueDateMilli - today < 0">( overdue ! )</span> 
+                <span *ngIf="task.dueDateMilli - today < 0"> '( overdue ! )' </span> 
               </div>
               <p class="task-category">{{task.category}}</p>
             </div>
