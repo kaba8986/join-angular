@@ -111,3 +111,33 @@ h4 {
     color: grey;
   }
 }
+
+.prio-high {
+  display: inline-block;
+  background: $prio-high-bg;
+  color: $prio-high-font !important;
+  font-weight: 600;
+  border: 1px solid $prio-high-font;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.prio-middle {
+  display: inline-block;
+  background: $prio-middle-bg;
+  color: $prio-middle-font !important;
+  font-weight: 600;
+  border: 1px solid $prio-middle-font;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.prio-low {
+  display: inline-block;
+  background: $prio-low-bg;
+  color: $prio-low-font !important;
+  font-weight: 600;
+  border: 1px solid $prio-low-font;
+  border-radius: 4px;
+  padding: 2px 4px;
+}

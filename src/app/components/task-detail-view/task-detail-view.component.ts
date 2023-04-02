@@ -39,4 +39,8 @@ export class TaskDetailViewComponent implements OnInit {
     dialogRef.componentInstance.taskId = obj.id;
   }
 
+  getPrioClass(prio: string) {
+    return `prio-${prio}`;
+  }
+
 }
