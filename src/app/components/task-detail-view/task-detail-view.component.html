@@ -26,8 +26,9 @@
     </div>
     <h4>Created at: <span> {{getDate(currTask.creationDateMilli) | date}}</span></h4>
     <h4>Due date: 
-      <span [class.due-date-alert]="currTask.dueDateMilli - today < 0"> {{getDate(currTask.dueDateMilli) | date}}</span>
-      <p class="due-date-alert" *ngIf="currTask.dueDateMilli - today < 0"><span> ( overdue ! )</span> </p> 
+      <span *ngIf="currTask.hasDueDate" [class.due-date-alert]="currTask.dueDateMilli - today < 0"> {{getDate(currTask.dueDateMilli) | date}}</span>
+      <span *ngIf="!currTask.hasDueDate">[no Due Date]</span>
+      <p  class="due-date-alert" *ngIf="currTask.dueDateMilli - today < 0" && currTask.hasDueDate ><span> ( overdue ! )</span> </p> 
     </h4>
     <h4>Priority: <span [ngClass]="getPrioClass(currTask.priority)"> {{currTask.priority}}</span></h4>
   </div>

@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getDuedate(millis: number) {
+  getDate(millis: number) {
     return new Date(millis);
   }
 

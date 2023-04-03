@@ -50,14 +50,19 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-side">
-      <mat-slide-toggle class="due-date-toggle" [(ngModel)]="hasDueDate" name="hasDueDate">Due Date</mat-slide-toggle>
+      <mat-slide-toggle class="due-date-toggle" [(ngModel)]="hasDueDate" name="hasDueDate">Due Date <span *ngIf="newTask.dueDate !== null">({{newTask.dueDate | date}})</span></mat-slide-toggle>
       <mat-form-field appearance="outline" class="date-picker full-width" *ngIf="hasDueDate">
         <mat-label>Due Date</mat-label>
         <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate"
-          name="datepicker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
+          name="datepicker" #dueDate="ngModel" required>
+
         <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <div *ngIf="dueDate.invalid && (description.dirty || dueDate.touched)" class="alert">
+          <div *ngIf="dueDate.errors?.['required']">
+            Due Date is required.
+          </div>
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="outline">

@@ -5,6 +5,7 @@ export class Task {
   description: string;
   category: string;
   assignments: any;
+  hasDueDate: boolean;
   dueDate: any;
   dueDateMilli: number;
   creationDate: any;
@@ -18,7 +19,8 @@ export class Task {
     this.description = obj ? obj.description : "";
     this.category = obj ? obj.category : "General";
     this.assignments = obj ? obj.assignments : [];
-    this.dueDate = obj ? obj.dueDate : "";
+    this.hasDueDate = obj ? obj.hasDueDate : false;
+    this.dueDate = obj ? obj.dueDate : null;
     this.dueDateMilli = obj ? obj.dueDateMilli : 0;
     this.creationDate = obj ? obj.creationDate : new Date();
     this.creationDateMilli = obj ? obj.creationDateMilli : 0;
@@ -33,6 +35,7 @@ export class Task {
       description: this.description,
       category: this.category,
       assignments: this.assignments,
+      hasDueDate: this.hasDueDate,
       dueDate: this.dueDate,
       dueDateMilli: this.dueDateMilli,
       creationDate: this.creationDate,

@@ -77,10 +77,12 @@ export class AddTaskComponent implements OnInit {
   createTask() {
     this.loading = true;
     this.newTask.assignments = this.assignments.value;
-    if(this.hasDueDate) {
+
+    //if due-date is selected and due-date exists then calc duedatemillis
+    if(this.hasDueDate && this.newTask.dueDate) {
       this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
     } else {
-      this.newTask.dueDate = '[no Due Date]'; 
+      this.newTask.dueDate = null;
     }
     this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
