@@ -36,6 +36,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
 import { SuccessComponent } from './pages/success/success.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
+import { TaskAddedSnackComponent } from './components/task-added-snack/task-added-snack.component';
 
 
 
@@ -61,7 +62,8 @@ import { ResetSuccessComponent } from './pages/reset-success/reset-success.compo
     SignupComponent,
     PasswordForgottenComponent,
     SuccessComponent,
-    ResetSuccessComponent
+    ResetSuccessComponent,
+    TaskAddedSnackComponent
   ],
   imports: [
     AppRoutingModule,

@@ -2,16 +2,27 @@
   <div class="headline">
     <h1>Add Task</h1>
   </div>
-  <form class="add-task-form">
+  <form class="add-task-form" (ngSubmit)="onSubmit()" >
     <div class="left-side">
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title">
+        <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title" #title="ngModel" required>
+        <!-- Validation -->
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+          <div *ngIf="title.errors?.['required']">
+            Title is required.
+          </div>
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="newTask.description" name="description"></textarea>
+        <textarea matInput [(ngModel)]="newTask.description" name="description" #description="ngModel" required></textarea>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+          <div *ngIf="description.errors?.['required']">
+            Description is required.
+          </div>
+        </div>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -47,7 +58,7 @@
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field> 
+      </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Priority</mat-label>
@@ -62,11 +73,12 @@
         <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
       </mat-form-field>
       <div class="subtask-list">
-        <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
+        <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon
+            (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
       </div>
       <div class="button-line">
         <button class="clear-form" type="reset" (click)="clearForm()">Close</button>
-        <button class="create-task" (click)="createTask()">Create Task</button>
+        <button class="create-task" type="submit">Create Task</button>
       </div>
 
     </div>

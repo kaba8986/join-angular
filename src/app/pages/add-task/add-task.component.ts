@@ -1,10 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgModel } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.class';
 import { Task } from 'src/app/models/task.class';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TaskAddedSnackComponent } from 'src/app/components/task-added-snack/task-added-snack.component';
 
 @Component({
   selector: 'app-add-task',
@@ -32,7 +34,8 @@ export class AddTaskComponent implements OnInit {
 
 
   constructor(
-    public _firestore: AngularFirestore
+    public _firestore: AngularFirestore,
+    private _snackBar: MatSnackBar
   ) {
     this.minDate = new Date();
     this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({idField: 'id'});
@@ -53,21 +56,38 @@ export class AddTaskComponent implements OnInit {
     this.newTask.subTasks.splice(i, 1);
   }
 
+  openSnackBar() {
+    this._snackBar.openFromComponent(TaskAddedSnackComponent, {
+      duration: 3000,
+    });
+  }
+
   clearForm() {
     this.newTask = new Task();
   }
 
+  onSubmit() {
+    if(this.newTask.title && this.newTask.description) {
+      this.createTask();
+    } else {
+      return;
+    }
+  }
 
   createTask() {
+    this.loading = true;
     this.newTask.assignments = this.assignments.value;
-    if(this.newTask.dueDate == "") {
-      this.newTask.dueDate = '[no Due Date]'; 
-    } else {
+    if(this.hasDueDate) {
       this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    } else {
+      this.newTask.dueDate = '[no Due Date]'; 
     }
     this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
+    this.loading = false;
+    this.openSnackBar();
   }
+
 
 
 }

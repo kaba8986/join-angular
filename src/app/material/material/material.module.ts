@@ -14,11 +14,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const materialComponents: any = [
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, 
   MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatRadioModule, 
-  MatSelectModule, MatSidenavModule, MatSlideToggleModule, MatTooltipModule];
+  MatSelectModule, MatSidenavModule, MatSlideToggleModule, MatSnackBarModule, MatTooltipModule];
 
 
 @NgModule({
