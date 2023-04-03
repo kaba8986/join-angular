@@ -53,10 +53,10 @@ export class ContactsComponent implements OnInit {
     dialogRef.componentInstance.contactId = this.currContact.id;
   }
 
-  openEditDialog() {
+  openEditDialog(obj: any) {
     const dialogRef = this.dialog.open(EditContactComponent);
-    dialogRef.componentInstance.currContact = this.currContact;
-    dialogRef.componentInstance.contactId = this.currContact.id;
+    dialogRef.componentInstance.currContact = obj;
+    dialogRef.componentInstance.contactId = obj.id;
   }
 
   showContact (obj: any) {
