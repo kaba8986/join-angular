@@ -6,7 +6,7 @@
         <input type="text" placeholder="Search for...">
         <mat-icon>search</mat-icon>
       </div>
-      <button>
+      <button (click)="openDialog(0)">
         Add Task<mat-icon>add</mat-icon>
       </button>
     </div>
@@ -21,10 +21,10 @@
         <div *ngFor="let task of allTasks$ | async">
           <mat-card class="task-card" [class.d-none]="task.stage !== i" (click)="openDetailView(task)">
             <div class="card-header">
-              <div *ngIf="task.hasDueDate" class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDate(task.dueDateMilli) | date}} <br> 
+              <div *ngIf="task.dueDateMilli" class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDate(task.dueDateMilli) | date}} <br> 
                 <span *ngIf="task.dueDateMilli - today < 0"> ( overdue ! ) </span> 
               </div>
-              <div *ngIf="!task.hasDueDate" class="task-due-date">[no Due Date]</div>
+              <div *ngIf="!task.dueDateMilli" class="task-due-date">[no Due Date]</div>
               <p class="task-category">{{task.category}}</p>
             </div>
             <div class="card-content">

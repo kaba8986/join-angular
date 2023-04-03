@@ -1,69 +1,83 @@
-
-  <form class="add-task-form">
-    <div class="left-side">
-      <mat-form-field appearance="outline">
-        <mat-label>Title</mat-label>
-        <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="newTask.description" name="description"></textarea>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Category</mat-label>
-        <mat-select [(ngModel)]="newTask.category" name="category">
-          <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+<form class="add-task-form" (ngSubmit)="onSubmit()">
+  <div class="left-side">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title" #title="ngModel" required>
+      <!-- Validation -->
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+        <div *ngIf="title.errors?.['required']">
+          Title is required.
+        </div>
+      </div>
+    </mat-form-field>
 
 
-      <mat-form-field appearance="outline">
-        <mat-label>Assigned to</mat-label>
-        <mat-select [formControl]="assignments" multiple>
-          <mat-select-trigger>
-            {{assignments.value?.[0] || ''}}
-            <span *ngIf="(assignments.value?.length || 0) > 1" class="example-additional-selection">
-              (+{{(assignments.value?.length || 0) - 1}} {{assignments.value?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let contact of allContacts$ | async" [value]="contact">{{contact.lastName}},
-            {{contact.firstName}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="newTask.description" name="description" #description="ngModel"
+        required></textarea>
+      <!-- Validation -->
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+        <div *ngIf="description.errors?.['required']">
+          Description is required.
+        </div>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="newTask.category" name="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Assigned to</mat-label>
+      <mat-select [formControl]="assignments" multiple>
+        <mat-select-trigger>
+          {{assignments.value?.[0] || ''}}
+          <span *ngIf="(assignments.value?.length || 0) > 1" class="example-additional-selection">
+            (+{{(assignments.value?.length || 0) - 1}} {{assignments.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let contact of allContacts$ | async" [value]="contact">{{contact.lastName}},
+          {{contact.firstName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-side">
+    <mat-form-field appearance="outline" class="date-picker" class="full-width">
+      <mat-label>Due Date</mat-label>
+      <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate" [min]="minDate"
+        name="datepicker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select [(value)]="newTask.priority">
+        <mat-option *ngFor="let prio of priorities" [value]="prio.value">{{prio.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Subtasks</mat-label>
+      <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
+      <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
+    </mat-form-field>
+    <div class="subtask-list">
+      <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon
+          (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
+    </div>
+    <div class="button-line">
+      <button class="clear-form" mat-button mat-dialog-close>Close</button>
+      <button class="create-task" type="submit">Create Task</button>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="right-side">
-      <mat-form-field appearance="outline" class="date-picker" class="full-width">
-        <mat-label>Due Date</mat-label>
-        <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate"
-          [min]="minDate" name="datepicker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field> 
-
-      <mat-form-field appearance="outline">
-        <mat-label>Priority</mat-label>
-        <mat-select [(value)]="newTask.priority">
-          <mat-option *ngFor="let prio of priorities" [value]="prio.value">{{prio.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Subtasks</mat-label>
-        <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
-        <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
-      </mat-form-field>
-      <div class="subtask-list">
-        <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
-      </div>
-      <div class="button-line">
-        <button class="clear-form" mat-button mat-dialog-close>Close</button>
-        <button class="create-task" (click)="createTask()">Create Task</button>
-      </div>
-
-    </div>
-  </form>
+  </div>
+</form>

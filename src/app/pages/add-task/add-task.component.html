@@ -2,7 +2,7 @@
   <div class="headline">
     <h1>Add Task</h1>
   </div>
-  <form class="add-task-form" (ngSubmit)="onSubmit()" >
+  <form class="add-task-form" (ngSubmit)="onSubmit()">
     <div class="left-side">
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
@@ -17,7 +17,9 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="newTask.description" name="description" #description="ngModel" required></textarea>
+        <textarea matInput [(ngModel)]="newTask.description" name="description" #description="ngModel"
+          required></textarea>
+        <!-- Validation -->
         <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
           <div *ngIf="description.errors?.['required']">
             Description is required.
@@ -50,19 +52,12 @@
 
     <!-- RIGHT SIDE -->
     <div class="right-side">
-      <mat-slide-toggle class="due-date-toggle" [(ngModel)]="hasDueDate" name="hasDueDate">Due Date <span *ngIf="newTask.dueDate !== null">({{newTask.dueDate | date}})</span></mat-slide-toggle>
-      <mat-form-field appearance="outline" class="date-picker full-width" *ngIf="hasDueDate">
+      <mat-form-field appearance="outline" class="date-picker full-width">
         <mat-label>Due Date</mat-label>
         <input [attr.disabled]="loading" matInput [matDatepicker]="picker" [(ngModel)]="newTask.dueDate"
-          name="datepicker" #dueDate="ngModel" required>
-
+          name="datepicker">
         <mat-datepicker-toggle matSuffix [for]="picker" id="date-picker-toggle"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <div *ngIf="dueDate.invalid && (description.dirty || dueDate.touched)" class="alert">
-          <div *ngIf="dueDate.errors?.['required']">
-            Due Date is required.
-          </div>
-        </div>
       </mat-form-field>
 
       <mat-form-field appearance="outline">

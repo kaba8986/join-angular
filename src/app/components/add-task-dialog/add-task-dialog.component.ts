@@ -59,13 +59,28 @@ export class AddTaskDialogComponent implements OnInit {
     this.newTask = new Task();
   }
 
+  onSubmit() {
+    if(this.newTask.title && this.newTask.description) {
+      this.createTask();
+    } else {
+      return;
+    }
+  }
+
 
   createTask() {
-    this.newTask.stage = this.stage;
+    this.loading = true;
     this.newTask.assignments = this.assignments.value;
-    this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    this.newTask.stage = this.stage;
+    //calc Millis only if duedate exists
+    if(this.newTask.dueDate !== null) {
+      this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    } else {
+      this.newTask.dueDateMilli = 0; 
+    }
     this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
+    this.loading = false;
     this.dialogRef.close();
   }
 
