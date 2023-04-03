@@ -18,7 +18,8 @@
         <mat-icon (click)="openDialog(i)">add</mat-icon>
       </div>
       <div class="column-content">
-        <div *ngFor="let task of allTasks$ | async">
+        <!-- <div *ngFor="let task of allTasks$ | async"> -->
+        <div *ngFor="let task of allTasks$  | async">
           <mat-card class="task-card" [class.d-none]="task.stage !== i" (click)="openDetailView(task)">
             <div class="card-header">
               <div *ngIf="task.dueDateMilli" class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDate(task.dueDateMilli) | date}} <br> 

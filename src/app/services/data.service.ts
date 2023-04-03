@@ -1,29 +1,42 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { doc } from '@angular/fire/firestore';
-import { doc } from 'firebase/firestore';
-import { Contact } from '../models/contact.class';
+import { Observable } from 'rxjs';
 import { Task } from '../models/task.class';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collection, getFirestore, query, where } from "firebase/firestore";
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  contactsRef: AngularFirestoreCollection<Contact>;
-  tasksRef: AngularFirestoreCollection<Task>;
+  db = getFirestore();
 
   constructor(
-    private _db: AngularFirestore
-  ) { 
-    this.contactsRef = _db.collection('contacts');
-    this.tasksRef = _db.collection('tasks');
+    private _fs: AngularFirestore
+    ) {}
+
+  getDaytime() {
+    let date = new Date();
+    let currHours = date.getHours();
+    if(currHours >=2 && currHours <=12) {
+      return 'Morning';
+    } else if (currHours >12 && currHours <=18) {
+      return 'Afternoon';
+    } else {
+      return 'Evening'
+    }
   }
 
-  /*
-
-  delete(collectionRef: string, id: string): Promise<void> {
-    return collectionRef.doc(id).delete();
+  getAllTasks() {
+    return this._fs.collection<Task>('tasks').valueChanges({idField: 'id'});
   }
-  */
+
+  getTasksByStage(stage: number) {
+    const tasksRef = collection(this.db, "tasks");
+    return query(tasksRef, where('stage', '==', stage));
+  }
+
 }
