@@ -23,12 +23,27 @@
       </div>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field *ngIf="!customCategorySelected"  appearance="outline" class="category-box">
       <mat-label>Category</mat-label>
-      <mat-select [(ngModel)]="currTask.category" name="category">
-        <mat-option *ngFor="let cat of categories" [value]="cat">{{cat}}</mat-option>
+      <mat-select [(ngModel)]="currTask.category" name="category" #selectCategory>
+        <mat-option *ngFor="let cat of categories" [value]="cat">
+          {{cat}}
+        </mat-option>
+        <mat-option class="new-category-option" (click)="customCategorySelected = true">add new category</mat-option>
       </mat-select>
     </mat-form-field>
+
+      <!-- Custom Input Field-->
+      <mat-form-field *ngIf="customCategorySelected" class="full-width new-category-field" appearance="outline" >
+        <mat-label>New Category</mat-label>
+        <input matInput type="text" [(ngModel)]="newCategory" placeholder="New Category" name="new-category" required>
+        <button class="add-new-category" *ngIf="newCategory" matSuffix mat-icon-button aria-label="Clear" (click)="newCategory=''">
+          <mat-icon (click)="addNewCategory()">add</mat-icon> 
+        </button>
+        <button class="close-new-category" *ngIf="!newCategory" matSuffix mat-icon-button aria-label="Clear" (click)="newCategory=''">
+          <mat-icon (click)="customCategorySelected = false">close</mat-icon>
+        </button>
+      </mat-form-field>
 
 
     <mat-form-field appearance="outline">

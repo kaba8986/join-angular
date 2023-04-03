@@ -21,8 +21,10 @@ export class AddTaskComponent implements OnInit {
   hasDueDate: boolean = false;
   subtaskValue: string = '';
   assignments = new FormControl('');
+  customCategorySelected: boolean = false;
+  newCategory: string = '';
 
-  categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
+  categories: any = ['General', 'Design', 'Sale', 'Backoffice'];
 
   allContacts$: Observable<Contact[]>;
 
@@ -60,6 +62,13 @@ export class AddTaskComponent implements OnInit {
     this._snackBar.openFromComponent(TaskAddedSnackComponent, {
       duration: 3000,
     });
+  }
+
+  addNewCategory() {
+    if(this.newCategory) {
+      this.categories.push(this.newCategory);
+      this.customCategorySelected = false;
+    }
   }
 
   clearForm() {

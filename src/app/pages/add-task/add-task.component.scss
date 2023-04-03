@@ -39,6 +39,55 @@
   }
 }
 
+.new-category-field {
+  position: relative;
+
+  button {
+    position: absolute;
+    top: -34px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    mat-icon {
+      border-radius: 50%;
+    }
+
+  }
+
+  .add-new-category {
+    background-color: $theme-color;
+    color: #fff;
+
+    &:hover {
+      background-color: $theme-color-font;
+    }
+  }
+
+  .close-new-category {
+    border: 1px solid $theme-color;
+    color: $theme-color;
+    background-color: #fff;
+
+    &:hover {
+      border: 1px solid $theme-color-font;
+      color: $theme-color-font;
+    }    
+  }
+
+
+}
+
+.new-category-option {
+  font-style: italic;
+  color: grey;
+  background: rgb(241, 241, 241);
+}
+
 
 .add-subtask {
   cursor: pointer;

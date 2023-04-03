@@ -18,8 +18,10 @@ export class AddTaskDialogComponent implements OnInit {
   minDate: Date;
   subtaskValue: string = '';
   assignments = new FormControl('');
+  customCategorySelected: boolean = false;
+  newCategory: string = '';
 
-  categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
+  categories: any = ['General', 'Design', 'Sale', 'Backoffice'];
   // allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
 
   allContacts$: Observable<Contact[]>;
@@ -53,6 +55,13 @@ export class AddTaskDialogComponent implements OnInit {
 
   removeSubtask(i: number) {
     this.newTask.subTasks.splice(i, 1);
+  }
+
+  addNewCategory() {
+    if(this.newCategory) {
+      this.categories.push(this.newCategory);
+      this.customCategorySelected = false;
+    }
   }
 
   clearForm() {

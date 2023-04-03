@@ -28,8 +28,10 @@ export class EditTaskComponent implements OnInit {
   subtaskValue: string = '';
   assignments = new FormControl('');
   db = getFirestore();
+  customCategorySelected: boolean = false;
+  newCategory: string = '';
 
-  categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
+  categories: any = ['General', 'Design', 'Sale', 'Backoffice'];
 
   allContacts$: Observable<Contact[]>;
 
@@ -66,6 +68,13 @@ export class EditTaskComponent implements OnInit {
     console.log(this.currTask);
   }
 
+  addNewCategory() {
+    if(this.newCategory) {
+      this.categories.push(this.newCategory);
+      this.customCategorySelected = false;
+    }
+  }
+
   onSubmit() {
     if (this.currTask.title && this.currTask.description) {
       this.updateTask();
@@ -80,17 +89,19 @@ export class EditTaskComponent implements OnInit {
     this.currTask.assignments = this.assignments.value;
     this.currTask.dueDate = this.defaultValue
 
-    //calc millis only if duedate exists
-    if(this.currTask.dueDate !== null) {
+    //calc millis only if duedate exists  
+    if(this.currTask.dueDate != null) {
       this.currTask.dueDateMilli = this.currTask.dueDate.getTime();
     } else {
       this.currTask.dueDateMilli = 0; 
     }
+    
     const updatedTaskRef = doc(collection(this.db, 'tasks'));
     await deleteDoc(doc(this.db, 'tasks', this.taskId));
     await setDoc(updatedTaskRef, this.currTask);
     this.dialogRef.close();
     this.loading = false;
+    
   }
 
 }
