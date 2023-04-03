@@ -7,27 +7,27 @@
     </div>
     <div class="form-box">
         <img src="assets/img/user_anonym.svg" alt="">
-        <form class="contact-form">
+        <form class="contact-form" (ngSubmit)="onSubmit()" [formGroup]="form">
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Firstname</mat-label>
-                <input matInput placeholder="Name" name="firstName" [(ngModel)]="newContact.firstName">
+                <input matInput placeholder="Name" name="firstName" formControlName="firstName" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Lastname</mat-label>
-                <input matInput placeholder="Name" name="lastName" [(ngModel)]="newContact.lastName">
+                <input matInput placeholder="Name" name="lastName" formControlName="lastName" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" name="email"  [(ngModel)]="newContact.email">
+                <input matInput placeholder="Email" name="email" formControlName="email" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" name="phone"  [(ngModel)]="newContact.phone">
+                <input matInput placeholder="Phone" name="phone" formControlName="phone">
             </mat-form-field>
             <div class="button-line">
-                     <button mat-button class="cancel-form" mat-dialog-close>Cancel</button>
-                <button class="create-task" (click)="createContact()">Create Contact</button>
-              </div>
+                <button mat-button class="cancel-form" mat-dialog-close>Cancel</button>
+                <button class="create-task" type="submit">Create Contact</button>
+            </div>
         </form>
     </div>
 </div>
