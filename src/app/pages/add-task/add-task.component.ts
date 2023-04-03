@@ -16,12 +16,11 @@ export class AddTaskComponent implements OnInit {
   loading: boolean = false;
   newTask: Task = new Task();
   minDate: Date;
-  date = new FormControl(new Date())
+  hasDueDate: boolean = false;
   subtaskValue: string = '';
   assignments = new FormControl('');
 
   categories: any = ['New Category', 'General', 'Design', 'Sale', 'Backoffice'];
-  // allContacts: any = ['Max Mustermann', 'Beate Beispiel'];
 
   allContacts$: Observable<Contact[]>;
 
@@ -61,7 +60,11 @@ export class AddTaskComponent implements OnInit {
 
   createTask() {
     this.newTask.assignments = this.assignments.value;
-    this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    if(this.newTask.dueDate == "") {
+      this.newTask.dueDate = '[no Due Date]'; 
+    } else {
+      this.newTask.dueDateMilli = this.newTask.dueDate.getTime();
+    }
     this.newTask.creationDateMilli = this.newTask.creationDate.getTime();
     this._firestore.collection('tasks').add(this.newTask.toJSON());   
   }

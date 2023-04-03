@@ -31,11 +31,14 @@ export class AddContactComponent implements OnInit {
   ngOnInit(): void {}
 
  onSubmit() {
+  console.log(this.form.value);
+  /*
     if(this.form.invalid) {
       return;
     } else {
       this.createContact(this.form.value);
     }
+    */
   }
 
   createContact(contact: Contact) {
