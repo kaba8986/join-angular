@@ -5,8 +5,8 @@
     <li [routerLink]="['/board']"><span><img src="assets/img/board_logo.svg"></span>Board</li>
     <li [routerLink]="['/add-task']"><span><img src="assets/img/add_task_logo.svg"></span>Add Task</li>
     <li [routerLink]="['/contacts']"><span><img src="assets/img/contacts_logo.svg"></span>Contacts</li>
-    <li [routerLink]="['/login']"><mat-icon>login</mat-icon> Login</li>
-    <li><mat-icon>logout</mat-icon> Logout</li>
+    <li [routerLink]="['/login']" *ngIf="!this._authService.isLoggedIn"><mat-icon>login</mat-icon> Login</li>
+    <li *ngIf="this._authService.isLoggedIn" (click)="_authService.SignOut()"><mat-icon>logout</mat-icon> Logout</li>
     <li [routerLink]="['/impress']"class="legal-notice-link"><img src="assets/img/impressum_icon.svg">Impress</li>
   </ul>
 </div>

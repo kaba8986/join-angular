@@ -10,11 +10,21 @@
     color: $theme-color;
 }
 
+h1 {
+  margin-bottom: 16px;
+  font-size: 48px;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: 32px;
+}
+
 
 
 .go-back {
   position: absolute;
-  top: 80px;
+  top: 50px;
   right: 80px;
   font-size: 40px;
   transition: 0.125s;

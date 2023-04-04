@@ -6,9 +6,9 @@
       <img class="help-img" src="assets/img/help_logo.svg" alt="">
       <img class="profile-img" src="assets/img/profile_guest.png" [matMenuTriggerFor]="menu">
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Impress</button>
-        <button mat-menu-item routerLink="/login">Login</button>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item routerLink="/impress">Impress</button>
+        <button mat-menu-item routerLink="/login" *ngIf="!this._authService.isLoggedIn">Login</button>
+        <button mat-menu-item *ngIf="this._authService.isLoggedIn" (click)="_authService.SignOut()">Logout</button>
       </mat-menu>
     </div>
     <router-outlet class="outlet-container"></router-outlet>

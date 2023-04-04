@@ -6,43 +6,45 @@
   </div>
   <div class="main-content">
     <div class="grid-container">
-      <div class="tasks-on-board grid-card">
-        <span class="counter">4</span>
+      <div class="tasks-on-board grid-card" routerLink="/board">
+        <span class="counter">{{(allTasks$ | async)?.length }}</span>
         <p>Tasks on Board</p>
       </div>
-      <div class="tasks-in-progress grid-card">
-        <span class="counter">1</span>
+      <div class="tasks-in-progress grid-card"  routerLink="/board">
+        <span class="counter">{{(tasksStage1$ | async)?.length}}</span>
         <p>Tasks in Progress</p>
       </div>
-      <div class="tasks-awaiting-feedback grid-card">
-        <span class="counter">2</span>
+      <div class="tasks-awaiting-feedback grid-card"  routerLink="/board">
+        <span class="counter">{{(tasksStage2$ | async)?.length}}</span>
         <p>Awaiting Feedback</p>
       </div>
-      <div class="tasks-upcoming grid-card">
+      <div class="tasks-upcoming grid-card"  routerLink="/board">
         <div class="upcoming-count">
           <img src="assets/img/urgency-high.png" alt="">
           <div>
-            <span class="counter-small">2</span>
+            <span class="counter-small">{{(urgentTasks$ | async)?.length}}</span>
             <p>Urgent</p>
           </div>
         </div>
         <span class="divider-grey"></span>
         <div class="upcoming-deadline">
-          <span>2023-03-31</span>
+          <div *ngFor="let task of closestDeadline$ | async; index as i ">
+            <span >{{task.title}}</span>
+          </div>
           <p>Upcoming Deadline</p>
         </div>
       </div>
-      <div class="tasks-todo grid-card">
+      <div class="tasks-todo grid-card"  routerLink="/board">
         <img src="assets/img/pen.png" alt="">
         <div>
-          <span class="counter">0</span>
+          <span class="counter">{{(tasksStage0$ | async)?.length}}</span>
           <p>To-Do</p>
         </div>
       </div>
-      <div class="tasks-done grid-card">
+      <div class="tasks-done grid-card"  routerLink="/board">
         <img src="assets/img/ok.png" alt="">
         <div>
-          <span class="counter">1</span>
+          <span class="counter">{{(tasksStage3$ | async)?.length}}</span>
           <p>Done</p>
         </div>
       </div>

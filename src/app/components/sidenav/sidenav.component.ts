@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  loggedIn = false;
+  loggedId: string;
+
+  loggedUser: any;
+  userLoaded = false;
+
+  constructor(
+    public _authService: AuthService,
+    public _afAuth: AngularFireAuth,
+  ) { }
 
   ngOnInit(): void {
   }

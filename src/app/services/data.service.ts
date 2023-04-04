@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { collection, getFirestore, query, where } from "firebase/firestore";
+import { collection, getFirestore, orderBy, query, where } from "firebase/firestore";
 
 
 
@@ -35,8 +35,16 @@ export class DataService {
   }
 
   getTasksByStage(stage: number) {
-    const tasksRef = collection(this.db, "tasks");
-    return query(tasksRef, where('stage', '==', stage));
+    return this._fs.collection<Task>('tasks', ref => ref.where('stage', '==', stage)).valueChanges();
   }
+
+  getUrgentTasks() {
+    return this._fs.collection<Task>('tasks', ref => ref.where('priority', '==', 'high')).valueChanges();
+  }
+
+  getClostestDeadline() {
+    return this._fs.collection<Task>('tasks', ref => ref.where('dueDateMilli', '==', '0').orderBy('dueDateMilli')).valueChanges();
+  }
+
 
 }

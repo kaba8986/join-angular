@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 const routes: Routes = [
   {path: '', component: SummaryComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'password-forgotten', component: PasswordForgottenComponent},
-  {path: 'password-resetted', component: ResetSuccessComponent}
+  {path: 'password-resetted', component: ResetSuccessComponent},
+  {path: 'success', component: SuccessComponent}
 ];
 
 @NgModule({

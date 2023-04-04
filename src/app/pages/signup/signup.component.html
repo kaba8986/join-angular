@@ -3,23 +3,28 @@
     <div class="divider"></div>
     <form action="">
         <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" name="name">
+            <mat-label>Firstname</mat-label>
+            <input [(ngModel)]="newUser.firstName" type="text"name="firstName" matInput placeholder="firstname" #userFirstname required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input [(ngModel)]="newUser.lastName" type="text"  name="lastName" matInput placeholder="lastname" #userLastname required>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" name="email">
+            <input [(ngModel)]="newUser.email" type="email" name="email" matInput
+                placeholder="email" #userMail required>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" name="password">
+            <input type="password" name="password" matInput placeholder="password" #userPassword required>
         </mat-form-field>
         <div class="to-login">
             <p>Already registered?</p>
             <a routerLink="/login">Go to login</a>
         </div>
         <div class="button-line">
-            <button class="login">Sign up</button>
+            <button class="login"type="submit" mat-button cdkFocusInitial value="Sign up" (click)="authService.SignUp(userMail.value, userPassword.value, userFirstname.value, userLastname.value)">Sign up</button>
         </div>
     </form>
 </div>

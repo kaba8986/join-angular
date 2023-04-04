@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-impress',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImpressComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _loc: Location
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  goBack() {
+    this._loc.back();
   }
 
 }
