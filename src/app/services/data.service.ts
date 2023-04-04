@@ -43,7 +43,13 @@ export class DataService {
   }
 
   getClostestDeadline() {
-    return this._fs.collection<Task>('tasks', ref => ref.where('dueDateMilli', '==', '0').orderBy('dueDateMilli')).valueChanges();
+
+    return this._fs.collection<Task>('tasks', ref => ref.orderBy('dueDateMilli')).valueChanges();
+
+  }
+
+  getDate(millis: number) {
+    return new Date(millis);
   }
 
 

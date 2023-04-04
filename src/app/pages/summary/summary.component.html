@@ -28,10 +28,10 @@
         </div>
         <span class="divider-grey"></span>
         <div class="upcoming-deadline">
-          <div *ngFor="let task of closestDeadline$ | async; index as i ">
-            <span >{{task.title}}</span>
+          <p>Next Deadline</p>
+          <div *ngFor="let task of closestDeadline$ | async | slice:0:2 ">
+            <span  *ngIf="task.dueDateMilli != 0">{{_ds.getDate(task.dueDateMilli) | date}}</span>
           </div>
-          <p>Upcoming Deadline</p>
         </div>
       </div>
       <div class="tasks-todo grid-card"  routerLink="/board">
