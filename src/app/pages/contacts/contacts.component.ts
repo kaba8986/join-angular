@@ -38,7 +38,7 @@ export class ContactsComponent implements OnInit {
     private _firestore: AngularFirestore,
     public router: Router
   ) { 
-    this.allContacts$ = _firestore.collection<Contact>('contacts').valueChanges({ idField: 'id' });
+    this.allContacts$ = _firestore.collection<Contact>('contacts', ref => ref.orderBy('lastName')).valueChanges({ idField: 'id' });
   }
 
   ngOnInit(): void {
