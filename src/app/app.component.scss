@@ -1,15 +1,16 @@
 .outer-container {
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  min-height: 100%;
+  // height: 100vh;
   display: flex;
 }
 
-.sidenav {
-  box-sizing: border-box;
-  width: 280px;
-  height: 100%;
-}
+// .sidenav {
+//   box-sizing: border-box;
+//   // width: 280px;
+//   min-height: 100%;
+// }
 
 .main-content {
   box-sizing: border-box;
@@ -46,7 +47,32 @@
   }
 }
 
+@media (max-width: 620px) {
+  .toolbar {
+    span {
+      font-size: 18px;
+      padding-right: 8px;
+    }
+  }
+}
 
+@media (max-width: 480px) {
+  .toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
 
+    .profile-img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
+  .main-content {
+    padding: 60px 0;
+  }
+}
 

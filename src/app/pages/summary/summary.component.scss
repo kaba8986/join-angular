@@ -170,3 +170,19 @@
     text-align: center;
   }
 }
+
+
+@media (max-width: 1240px) {
+  .main-content {
+    flex-direction: column-reverse;
+    gap: 32px;
+  }
+
+  .greeting-box {
+    padding: unset !important;
+  }
+
+  .grid-container {
+    max-width: unset;
+  }
+}
