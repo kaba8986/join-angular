@@ -8,6 +8,10 @@
     padding: 40px 80px;
     overflow-y: scroll;
     color: $theme-color;
+
+    p {
+      margin-bottom: 32px;
+    }
 }
 
 h1 {
@@ -33,5 +37,21 @@ h2 {
   &:hover {
     color: grey;
     transition: 0.125s;
+  }
+}
+
+@media (max-width: 900px) {  
+  .container {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 720px) {  
+  .container {
+    padding-top: 80px;
+
+    .go-back {
+      top: 32px;
+    }
   }
 }
