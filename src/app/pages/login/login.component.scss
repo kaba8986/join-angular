@@ -9,8 +9,6 @@
     background: #fff;
   }
 
-  h2 {
-  }
 
   .divider {
     width: 100px;
@@ -22,7 +20,7 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    max-width: 300px;
 }
 
 .remember-password {
@@ -71,5 +69,16 @@ form {
         color: $theme-color-font;
         background-color: #fff;
       }
+    }
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+
+  @media (max-width: 900px) {  
+    .container {
+      padding: 40px;
     }
   }

@@ -24,3 +24,10 @@
     text-decoration: none;
     line-height: 32px;
 }
+
+
+@media (max-width: 900px) {  
+  .container {
+    padding: 40px;
+  }
+}

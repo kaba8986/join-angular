@@ -9,9 +9,6 @@
     background: #fff;
   }
 
-  h2 {
-  }
-
   .divider {
     width: 100px;
     height: 3px;
@@ -22,7 +19,7 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    max-width: 300px;
 }
 
 .to-login{
@@ -71,5 +68,12 @@ form {
         color: $theme-color-font;
         background-color: #fff;
       }
+    }
+  }
+
+  
+  @media (max-width: 900px) {  
+    .container {
+      padding: 40px;
     }
   }
