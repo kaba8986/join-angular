@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="address-book">
+  <div class="address-book" [class.min-width-100]="currContact === ''" [class.display-none]="currContact !== ''">
     <mat-card *ngFor="let contact of allContacts$ | async" (click)="showContact(contact)">
       <mat-card-header>
         <img class="card-pic" src="assets/img/user_anonym.svg" mat-card-avatar>
@@ -9,7 +9,7 @@
       <!-- <mat-card-content>{{contact.name}}</mat-card-content> -->
     </mat-card>
   </div>
-  <div class="contacts-display">
+  <div class="contacts-display" [class.display-none]="currContact === ''" [class.min-width-100]="currContact !== ''">
     <div class="headline">
       <h1>Contacts</h1>
       <span class="divider"></span>
@@ -39,6 +39,6 @@
         <p>{{currContact.phone}}</p>
       </div>
     </div>
-    <button class="add-contact" (click)="openDialog()">New Contact <mat-icon>person_add</mat-icon></button>
   </div>
+  <button class="add-contact" [class.display-none]="currContact !== ''" (click)="openDialog()">New Contact <mat-icon>person_add</mat-icon></button>
 </div>

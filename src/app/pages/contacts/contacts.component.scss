@@ -1,5 +1,12 @@
 @import '../../themes/themes.scss';
 
+.min-width-100 {
+  min-width: unset;
+}
+
+.display-none {
+  display: flex;
+}
 
 
 .container {
@@ -14,7 +21,7 @@
 
 .address-book {
   box-sizing: border-box;
-  min-width: 380px;
+  min-width: 40%;
   height: 100%;
   border-right: 1px solid lightgray;
   background: rgb(238, 238, 238);
@@ -22,7 +29,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-} 
+}
 
 mat-card {
   cursor: pointer;
@@ -63,7 +70,7 @@ mat-card {
     height: 64px;
 
     .divider {
-      width: 4px; 
+      width: 4px;
       height: 100%;
       background-color: $theme-color-font;
     }
@@ -109,7 +116,7 @@ mat-card {
 
   .contact-information {
 
- 
+
     div {
       display: flex;
       gap: 16px;
@@ -160,3 +167,71 @@ mat-card {
 
 
 
+@media (max-width: 1240px) {
+
+  .address-book {
+    min-width: 50%;
+  }
+
+  .headline {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    height: auto !important;
+
+    h1 {
+      font-size: 48px;
+    }
+
+    .divider {
+      display: none;
+    }
+  }
+
+  .main-profile {
+    img {
+      width: 80px !important;
+      height: 80px !important;
+      margin-right: 16px !important;
+    }
+
+    div {
+        font-size: 20px !important;
+      span {
+        font-size: 24px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+
+  .min-width-100 {
+    min-width: 100%;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  .add-contact {
+    position: absolute;
+    top: 16px;
+    bottom: unset;
+    right: 16px;
+  }
+
+  .address-book {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 530px) {
+  .address-book {
+    padding-top: 100px;
+  }
+
+  .add-contact {
+    top: 36px;
+  }
+}

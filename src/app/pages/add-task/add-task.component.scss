@@ -100,7 +100,7 @@
   flex-direction: column;
   gap: 4px;
   margin-bottom: 32px;
-  overflow-wrap: break-all;
+
 
   span {
     display: flex;
@@ -202,6 +202,20 @@ mat-form-field {
   .button-line {
 
     button {
+      font-size: 18px;
+    }
+  }
+}
+
+
+@media (max-width: 540px) {
+
+    .button-line {
+
+      flex-direction: column;
+
+    button {
+      justify-content: center;
       font-size: 18px;
     }
   }

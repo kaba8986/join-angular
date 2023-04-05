@@ -4,7 +4,7 @@
   </div>
   <form class="add-task-form" (ngSubmit)="onSubmit()">
     <div class="left-side">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Title</mat-label>
         <input matInput placeholder="Title" [(ngModel)]="newTask.title" name="title" #title="ngModel" required>
         <!-- Validation -->
@@ -15,7 +15,7 @@
         </div>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Description</mat-label>
         <textarea matInput [(ngModel)]="newTask.description" name="description" #description="ngModel"
           required></textarea>
@@ -27,7 +27,7 @@
         </div>
       </mat-form-field>
 
-      <mat-form-field *ngIf="!customCategorySelected"  appearance="outline" class="category-box">
+      <mat-form-field *ngIf="!customCategorySelected"  appearance="outline" class="category-box" class="full-width">
         <mat-label>Category</mat-label>
         <mat-select [(ngModel)]="newTask.category" name="category" #selectCategory>
           <mat-option *ngFor="let cat of categories" [value]="cat">
@@ -38,7 +38,7 @@
       </mat-form-field>
 
         <!-- Custom Input Field-->
-        <mat-form-field *ngIf="customCategorySelected" class="full-width new-category-field" appearance="outline" >
+        <mat-form-field *ngIf="customCategorySelected" class="full-width new-category-field" appearance="outline">
           <mat-label>New Category</mat-label>
           <input matInput type="text" [(ngModel)]="newCategory" placeholder="New Category" name="new-category" required>
           <button class="add-new-category" *ngIf="newCategory" matSuffix mat-icon-button aria-label="Clear" (click)="newCategory=''">
@@ -49,7 +49,7 @@
           </button>
         </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Assigned to</mat-label>
         <mat-select [formControl]="assignments" multiple>
           <mat-select-trigger>
@@ -74,14 +74,14 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Priority</mat-label>
         <mat-select [(value)]="newTask.priority">
           <mat-option *ngFor="let prio of priorities" [value]="prio.value">{{prio.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Subtasks</mat-label>
         <input matInput placeholder="Add subtask..." #subtaskInput [(ngModel)]="subtaskValue" name="subtask">
         <mat-icon matSuffix class="add-subtask" (click)="addSubtask(subtaskInput.value)">add</mat-icon>
