@@ -62,10 +62,9 @@ export class BoardComponent implements OnInit {
     const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
       if (size.matches) {
         dialogRef.updateSize('100vw', '100vh');
-      } else {
-
-      }
+      } 
     });
+
     dialogRef.afterClosed().subscribe(() => {
       smallDialogSubscription.unsubscribe();
     });
@@ -74,7 +73,15 @@ export class BoardComponent implements OnInit {
   }
 
   openDetailView(obj: any) {
-    const dialogRef = this.dialog.open(TaskDetailViewComponent);
+
+    const dialogRef = this.dialog.open(TaskDetailViewComponent, {
+      maxWidth: '100vw'
+    });
+    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
+      if (size.matches) {
+        dialogRef.updateSize('100vw', '100vh');
+      } 
+    });
 
     dialogRef.componentInstance.taskId = obj.id;
     dialogRef.componentInstance.currTask = obj;
