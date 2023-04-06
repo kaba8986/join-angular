@@ -41,9 +41,9 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
   openDialog(): void {
-    
-    const dialogRef = this.dialog.open(AddContactComponent, {
+        const dialogRef = this.dialog.open(AddContactComponent, {
       maxWidth: '100vw'
     });
     const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
@@ -53,20 +53,31 @@ export class ContactsComponent implements OnInit {
     });
   }
 
+
   openDeleteDialog() {
     const dialogRef = this.dialog.open(DeleteContactComponent);
     dialogRef.componentInstance.contactId = this.currContact.id;
   }
 
+
   openEditDialog(obj: any) {
-    const dialogRef = this.dialog.open(EditContactComponent);
+    const dialogRef = this.dialog.open(EditContactComponent, {
+      maxWidth: '100vw'
+    });
+    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
+      if (size.matches) {
+        dialogRef.updateSize('100vw', '100vh');
+      } 
+    });
     dialogRef.componentInstance.currContact = obj;
     dialogRef.componentInstance.contactId = obj.id;
   }
 
+
   showContact(obj: any) {
     this.currContact = obj;
   }
+
 
   close() {
     this.currContact = "";
