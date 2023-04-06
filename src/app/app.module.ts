@@ -38,6 +38,8 @@ import { SuccessComponent } from './pages/success/success.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { TaskAddedSnackComponent } from './components/task-added-snack/task-added-snack.component';
 import { AccordeonComponent } from './pages/accordeon/accordeon.component';
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 
 
@@ -65,7 +67,8 @@ import { AccordeonComponent } from './pages/accordeon/accordeon.component';
     SuccessComponent,
     ResetSuccessComponent,
     TaskAddedSnackComponent,
-    AccordeonComponent
+    AccordeonComponent,
+    FilterPipe
   ],
   imports: [
     AppRoutingModule,

@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="greeting-box">
-      <p class="daytime">Good {{_ds.getDaytime()}}</p>
+      <p class="daytime">Good {{_ds.getDaytime()}} <span *ngIf="userLoaded">, <br> {{loggedUser.displayName}}</span></p>
       <p class="greeting-phrase">Good to see you!</p>
     </div>
   </div>

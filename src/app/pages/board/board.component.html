@@ -2,12 +2,14 @@
   <div class="heading">
     <h1>Board</h1>
     <div class="interaction-box">
-      <div class="input-box">
-        <input type="text" placeholder="Search for..." >
-        <mat-icon>search</mat-icon>
-      </div>
+
+      <!-- <div class="input-box">
+        <input type="text" placeholder="Search for..." type="text" name="search" [(ngModel)]="searchTerm" placeholder="search for task">
+        <mat-icon (click)="filterByTerm(searchTerm)">search</mat-icon>
+      </div> -->
+
       <button (click)="openDialog(0)">
-        Add Task
+        Add Tasks
       </button>
     </div>
   </div>
@@ -18,9 +20,8 @@
         <mat-icon (click)="openDialog(i)">add</mat-icon>
       </div>
       <div class="column-content">
-        <!-- <div *ngFor="let task of allTasks$ | async"> -->
-        <div *ngFor="let task of allTasks$  | async">
-          <mat-card class="task-card" [class.d-none]="task.stage !== i" (click)="openDetailView(task)">
+        <div *ngFor="let task of allTasks$  | async" [class.d-none]="task.stage !== i">
+          <mat-card class="task-card" (click)="openDetailView(task)">
             <div class="card-header">
               <div *ngIf="task.dueDateMilli" class="task-due-date" [class.due-date-alert]="task.dueDateMilli - today < 0" >{{getDate(task.dueDateMilli) | date}} <br> 
                 <span *ngIf="task.dueDateMilli - today < 0"> ( overdue ! ) </span> 

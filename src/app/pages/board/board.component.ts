@@ -8,6 +8,7 @@ import { AddTaskDialogComponent } from 'src/app/components/add-task-dialog/add-t
 import { TaskDetailViewComponent } from 'src/app/components/task-detail-view/task-detail-view.component';
 import { DataService } from 'src/app/services/data.service';
 import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
@@ -19,11 +20,14 @@ export class BoardComponent implements OnInit {
   levels: any = ['To do', 'In progress', 'Awaiting Feedback', 'Done'];
   allTasks$: Observable<Task[]>;
   allTasks: any = [];
+  filteredTasks: any = []
   tasksStage0$: any;
   tasksStage1$: any;
   tasksStage2$: any;
   tasksStage3$: any;
   today = new Date().getTime();
+
+  searchTerm: string;
 
   isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
     Breakpoints.XSmall
@@ -45,9 +49,40 @@ export class BoardComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
+
+  getDropList(index: number) {
+    return `tasksStage${index}`;
+  }
+
+  /*
+  filterByTerm(value: string) {
+    let filteredTasks:any = [];
+    this.allTasks$.forEach((array: any) => {
+      array.forEach((task: any) => {
+          if(JSON.stringify(Object.values(task)).toLowerCase().includes(value)) {
+            filteredTasks.push(task);
+          };
+      });
+    })
+    this.allTasks$ = filteredTasks;
+  }
+  */
+
 
   getDate(millis: number) {
     return new Date(millis);
