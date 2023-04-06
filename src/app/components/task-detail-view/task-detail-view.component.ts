@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/models/task.class';
 import { DeleteTaskComponent } from '../delete-task/delete-task.component';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
+import { Observable } from 'rxjs';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-task-detail-view',
@@ -15,8 +17,13 @@ export class TaskDetailViewComponent implements OnInit {
   currTask: Task = new Task();
   today = new Date().getTime();
 
+  isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.XSmall
+  );
+
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private readonly breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +41,15 @@ export class TaskDetailViewComponent implements OnInit {
 
   openEditDialog(obj: any) {
     this.dialog.closeAll();
-    const dialogRef = this.dialog.open(EditTaskComponent);
+
+    const dialogRef = this.dialog.open(EditTaskComponent, {
+      maxWidth: '100vw'
+    });
+    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
+      if (size.matches) {
+        dialogRef.updateSize('100vw', '100vh');
+      } 
+    });
     dialogRef.componentInstance.currTask = obj;
     dialogRef.componentInstance.taskId = obj.id;
   }
