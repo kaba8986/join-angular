@@ -1,4 +1,8 @@
-<form class="add-task-form" (ngSubmit)="onSubmit()">
+<div class="container"><form class="add-task-form" (ngSubmit)="onSubmit()">
+  <div class="button-line buttons-mobile" >
+    <button class="clear-form" mat-button mat-dialog-close>Close</button>
+    <button class="create-task" type="submit">Create</button>
+  </div>
   <div class="left-side">
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
@@ -89,10 +93,10 @@
       <span class="single-subtask-margin" *ngFor="let sub of newTask.subTasks; let i = index"> <mat-icon
           (click)="removeSubtask(i)">disabled_by_default</mat-icon> {{sub}}</span>
     </div>
-    <div class="button-line">
+    <div class="button-line buttons-desktop">
       <button class="clear-form" mat-button mat-dialog-close>Close</button>
-      <button class="create-task" type="submit">Create Task</button>
+      <button class="create-task" type="submit">Create</button>
     </div>
 
   </div>
-</form>
+</form></div>

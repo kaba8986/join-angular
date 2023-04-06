@@ -10,6 +10,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { AccordeonComponent } from './pages/accordeon/accordeon.component';
 
 const routes: Routes = [
   {path: '', component: SummaryComponent},

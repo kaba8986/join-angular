@@ -7,6 +7,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { AddTaskDialogComponent } from 'src/app/components/add-task-dialog/add-task-dialog.component';
 import { TaskDetailViewComponent } from 'src/app/components/task-detail-view/task-detail-view.component';
 import { DataService } from 'src/app/services/data.service';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-board',
@@ -24,11 +25,16 @@ export class BoardComponent implements OnInit {
   tasksStage3$: any;
   today = new Date().getTime();
 
+  isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.XSmall
+  );
+
 
   constructor(
     private _firestore: AngularFirestore,
     private dialog: MatDialog,
-    public _ds: DataService
+    public _ds: DataService,
+    private readonly breakpointObserver: BreakpointObserver
   ) { 
     this.allTasks$ = this._ds.getAllTasks();
 
@@ -48,12 +54,28 @@ export class BoardComponent implements OnInit {
   }
 
   openDialog(stage: number) {
-    const dialogRef = this.dialog.open(AddTaskDialogComponent);
+    // const dialogRef = this.dialog.open(AddTaskDialogComponent);
+
+    const dialogRef = this.dialog.open(AddTaskDialogComponent, {
+      maxWidth: '100vw'
+    });
+    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
+      if (size.matches) {
+        dialogRef.updateSize('100vw', '100vh');
+      } else {
+
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      smallDialogSubscription.unsubscribe();
+    });
+
     dialogRef.componentInstance.stage = stage;
   }
 
   openDetailView(obj: any) {
     const dialogRef = this.dialog.open(TaskDetailViewComponent);
+
     dialogRef.componentInstance.taskId = obj.id;
     dialogRef.componentInstance.currTask = obj;
   }

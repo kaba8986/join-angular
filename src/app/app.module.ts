@@ -37,6 +37,7 @@ import { PasswordForgottenComponent } from './pages/password-forgotten/password-
 import { SuccessComponent } from './pages/success/success.component';
 import { ResetSuccessComponent } from './pages/reset-success/reset-success.component';
 import { TaskAddedSnackComponent } from './components/task-added-snack/task-added-snack.component';
+import { AccordeonComponent } from './pages/accordeon/accordeon.component';
 
 
 
@@ -63,7 +64,8 @@ import { TaskAddedSnackComponent } from './components/task-added-snack/task-adde
     PasswordForgottenComponent,
     SuccessComponent,
     ResetSuccessComponent,
-    TaskAddedSnackComponent
+    TaskAddedSnackComponent,
+    AccordeonComponent
   ],
   imports: [
     AppRoutingModule,
