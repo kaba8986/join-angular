@@ -10,6 +10,7 @@ import { collection } from 'firebase/firestore';
 import { Router } from '@angular/router';
 import { DeleteContactComponent } from 'src/app/components/delete-contact/delete-contact.component';
 import { EditContactComponent } from 'src/app/components/edit-contact/edit-contact.component';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 
 
@@ -20,24 +21,20 @@ import { EditContactComponent } from 'src/app/components/edit-contact/edit-conta
 })
 export class ContactsComponent implements OnInit {
 
- allContacts$: Observable<Contact[]>;
+  allContacts$: Observable<Contact[]>;
+  isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.XSmall
+  );
 
- currContact: any = "";
- 
- /*
- currContact: any = {
-  firstName: 'Paula',
-  lastName: 'Schneider',
-  email: 'paula-s1988@web.de',
-  phone: '0123 456 7890'
- };
- */
+  currContact: any = "";
+
 
   constructor(
     public dialog: MatDialog,
     private _firestore: AngularFirestore,
-    public router: Router
-  ) { 
+    public router: Router,
+    private readonly breakpointObserver: BreakpointObserver
+  ) {
     this.allContacts$ = _firestore.collection<Contact>('contacts', ref => ref.orderBy('lastName')).valueChanges({ idField: 'id' });
   }
 
@@ -45,7 +42,15 @@ export class ContactsComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddContactComponent);
+    
+    const dialogRef = this.dialog.open(AddContactComponent, {
+      maxWidth: '100vw'
+    });
+    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
+      if (size.matches) {
+        dialogRef.updateSize('100vw', '100vh');
+      } 
+    });
   }
 
   openDeleteDialog() {
@@ -59,8 +64,8 @@ export class ContactsComponent implements OnInit {
     dialogRef.componentInstance.contactId = obj.id;
   }
 
-  showContact (obj: any) {
-   this.currContact = obj;
+  showContact(obj: any) {
+    this.currContact = obj;
   }
 
   close() {
